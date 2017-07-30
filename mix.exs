@@ -49,7 +49,8 @@ defmodule CenatusLtd.Mixfile do
     #  {:httpoison, "0.0.0", override: true},
      {:hackney, "~> 1.6", override: true},
      {:extwitter, "~> 0.8"},
-     {:elixirfm, "~> 0.0.10"}
+     {:elixirfm, "~> 0.0.10"},
+     {:ecto, github: "elixir-ecto/ecto", branch: "v2.1", override: true}
    ]
   end
 

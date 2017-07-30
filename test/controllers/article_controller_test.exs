@@ -29,6 +29,12 @@ defmodule CenatusLtd.ArticleControllerTest do
       assert Repo.get_by(Article, @valid_attrs)
     end
 
+    test "creates resource and redirects when data is valid (non UTF8)", %{conn: conn} do
+      conn = post conn, article_path(conn, :create), article: Map.merge(@valid_attrs, %{title: "Matemática"})
+      assert redirected_to(conn) == article_path(conn, :index)
+      assert Repo.get_by(Article, @valid_attrs)
+    end
+
     test "does not create resource and renders errors when data is invalid", %{conn: conn} do
       conn = post conn, article_path(conn, :create), article: @invalid_attrs
       assert html_response(conn, 200) =~ "New article"
