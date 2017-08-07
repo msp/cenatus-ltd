@@ -10,12 +10,19 @@ config :cenatus_ltd, CenatusLtd.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :cenatus_ltd, CenatusLtd.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "cenatus-test",
-  database: "cenatus_ltd_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+if System.get_env("DATABASE_URL") do
+  config :cenatus_ltd, Cyanometer.Repo,
+    adapter: Ecto.Adapters.Postgres,
+    url: System.get_env("DATABASE_URL"),
+    pool: Ecto.Adapters.SQL.Sandbox
+else
+  config :cenatus_ltd, CenatusLtd.Repo,
+    adapter: Ecto.Adapters.Postgres,
+    username: "cenatus-test",
+    database: "cenatus_ltd_test",
+    hostname: "localhost",
+    pool: Ecto.Adapters.SQL.Sandbox
+end
 
 config :extwitter, :oauth, [
    consumer_key: "foo",
