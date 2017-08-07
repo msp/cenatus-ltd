@@ -9,9 +9,11 @@ config :cenatus_ltd, CenatusLtd.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+
+
 # Configure your database
 if System.get_env("DATABASE_URL") do
-  config :cenatus_ltd, Cyanometer.Repo,
+  config :cenatus_ltd, CenatusLtd.Repo,
     adapter: Ecto.Adapters.Postgres,
     url: System.get_env("DATABASE_URL"),
     pool: Ecto.Adapters.SQL.Sandbox
