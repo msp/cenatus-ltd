@@ -11,10 +11,12 @@ defmodule CenatusLtd.Auth do
     user_id = get_session(conn, :user_id)
 
     cond do
-      user = conn.assigns[:current_user] ->
+      conn.assigns[:current_user] ->
         conn
+
       user = user_id && repo.get(CenatusLtd.User, user_id) ->
         assign(conn, :current_user, user)
+
       true ->
         assign(conn, :current_user, nil)
     end
@@ -38,8 +40,10 @@ defmodule CenatusLtd.Auth do
     cond do
       user && checkpw(given_pass, user.password_hash) ->
         {:ok, login(conn, user)}
+
       user ->
         {:error, :unauthorized, conn}
+
       true ->
         dummy_checkpw()
         {:error, :not_found, conn}
