@@ -68,7 +68,7 @@ defmodule CenatusLtd.RedirectorTest do
     assert actual_uri.host == expected_uri.host
     assert actual_uri.path == expected_uri.path
 
-    if actual_uri.query do
+    if actual_uri.query && expected_uri.query do
       assert Map.equal?(
         URI.decode_query(actual_uri.query),
         URI.decode_query(expected_uri.query)
