@@ -12,6 +12,7 @@
 
 alias CenatusLtd.Repo
 alias CenatusLtd.User
+alias CenatusLtd.Section
 
 require Logger
 
@@ -30,5 +31,14 @@ else
       changeset = User.registration_changeset(%User{}, user_params)
       Repo.insert!(changeset)
     end
+  end
+end
+
+for site_section <- ~w(Blog Portfolio) do
+  section = Repo.get_by(Section, name: site_section)
+
+  unless section do
+    changeset = Section.changeset(%Section{}, %{name: site_section})
+    Repo.insert!(changeset)
   end
 end

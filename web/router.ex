@@ -92,6 +92,7 @@ defmodule CenatusLtd.Router do
 
     resources("/articles", ArticleController, except: [:show])
     resources("/tags", TagController, except: [:show])
+    resources("/sections", SectionController)
     resources("/users", UserController)
   end
 

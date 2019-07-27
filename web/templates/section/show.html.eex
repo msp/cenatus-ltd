@@ -1,0 +1,11 @@
+<h2>Show section</h2>
+
+<ul>
+  <li>
+    <strong>Name:</strong>
+    <%= @section.name %>
+  </li>
+</ul>
+
+<%= link "Edit", to: section_path(@conn, :edit, @section) %>
+<%= link "Back", to: section_path(@conn, :index) %>
