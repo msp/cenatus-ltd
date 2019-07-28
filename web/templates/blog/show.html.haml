@@ -1,0 +1,35 @@
+.row
+  .col-md-6
+    %article.show
+      %image{data-src='#{@article.image_url}' class='cld-responsive'}
+  .col-md-6.related
+    - if length(@related) > 0 do
+      %h3.lp related articles
+      %ul
+        - for related <- @related do
+          %li
+            %a{href='#{article_path(@conn, :show, related)}'}
+              = related.title
+
+.row
+  .col-md-12
+    %article.show
+      %h3.lp
+        = @article.title
+        - if @current_user do
+          %a.smaller{href= '#{article_path(@conn, :edit, @article)}'}
+            [edit]
+
+      .content.lp= @article.content |> as_html
+      %p.lp.nbm.tags
+        Section:
+        = @article.section.name
+      - if length(@article.tags) > 0 do
+        %p.lp.nbm.tags
+          Filed as:
+          -# = render_tags_as_links_from(@conn, @article.tags)
+      %p.lp.published
+        Published on
+        = @article.published_at |> formatted
+
+    %br

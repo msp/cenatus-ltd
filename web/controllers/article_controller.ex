@@ -1,7 +1,7 @@
 defmodule CenatusLtd.ArticleController do
   use CenatusLtd.Web, :controller
 
-  alias CenatusLtd.Article
+  alias CenatusLtd.{Article, Section}
 
   def index(conn, _params) do
     articles =
@@ -14,21 +14,34 @@ defmodule CenatusLtd.ArticleController do
 
   def new(conn, _params) do
     changeset = Article.changeset(%Article{})
-    render(conn, "new.html", changeset: changeset, tags: [], tech_tags: [])
+
+    sections =
+      Repo.all(Section)
+      |> Enum.map(fn s -> {s.name, s.id} end)
+
+    render(conn, "new.html", changeset: changeset, tags: [], tech_tags: [], sections: sections)
   end
 
   def create(conn, %{"article" => article_params}) do
     changeset = Article.changeset(%Article{}, article_params)
+
+    sections =
+      Repo.all(Section)
+      |> Enum.map(fn s -> {s.name, s.id} end)
 
     case Repo.insert(changeset) do
       {:ok, _article} ->
         conn
         |> put_flash(:info, "Article created successfully.")
         |> redirect(to: article_path(conn, :index))
+
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset,
+        render(conn, "new.html",
+          changeset: changeset,
+          sections: sections,
           tags: taglist_from(changeset.changes.tags),
-          tech_tags: taglist_from(changeset.changes.tech_tags))
+          tech_tags: taglist_from(changeset.changes.tech_tags)
+        )
     end
   end
 
@@ -38,33 +51,33 @@ defmodule CenatusLtd.ArticleController do
       |> Repo.preload(:tags)
       |> Repo.preload(:tech_tags)
 
-    tag_ids = Enum.map(main_article.tags, fn(t) -> t.id end)
-    tech_tag_ids = Enum.map(main_article.tech_tags, fn(t) -> t.id end)
+    tag_ids = Enum.map(main_article.tags, fn t -> t.id end)
+    tech_tag_ids = Enum.map(main_article.tech_tags, fn t -> t.id end)
 
     tags_query =
-      from article in Article,
-      join: tag in assoc(article, :tags),
-      where: tag.id in ^tag_ids,
-      distinct: article.title
+      from(article in Article,
+        join: tag in assoc(article, :tags),
+        where: tag.id in ^tag_ids,
+        distinct: article.title
+      )
 
     tech_tags_query =
-      from article in Article,
-      join: tag in assoc(article, :tech_tags),
-      where: tag.id in ^tech_tag_ids,
-      distinct: article.title
+      from(article in Article,
+        join: tag in assoc(article, :tech_tags),
+        where: tag.id in ^tech_tag_ids,
+        distinct: article.title
+      )
 
-    candidates =
-      Repo.all(tags_query) ++ Repo.all(tech_tags_query)
+    candidates = Repo.all(tags_query) ++ Repo.all(tech_tags_query)
 
     related_articles =
       if candidates do
-        Enum.reject(candidates, fn(a) -> a.id == main_article.id end)
-        |> Enum.uniq_by(fn(c) -> c.id end)
+        Enum.reject(candidates, fn a -> a.id == main_article.id end)
+        |> Enum.uniq_by(fn c -> c.id end)
         |> Enum.take(10)
       else
         []
       end
-
 
     render(conn, "show.html", article: main_article, related: related_articles)
   end
@@ -72,14 +85,23 @@ defmodule CenatusLtd.ArticleController do
   def edit(conn, %{"id" => id}) do
     article =
       Repo.get!(Article, id)
+      |> Repo.preload(:section)
       |> Repo.preload(:tags)
       |> Repo.preload(:tech_tags)
 
+    sections =
+      Repo.all(Section)
+      |> Enum.map(fn s -> {s.name, s.id} end)
+
     changeset = Article.changeset(article)
 
-    render(conn, "edit.html", article: article, changeset: changeset,
+    render(conn, "edit.html",
+      article: article,
+      sections: sections,
+      changeset: changeset,
       tags: taglist_from(article.tags),
-      tech_tags: taglist_from(article.tech_tags))
+      tech_tags: taglist_from(article.tech_tags)
+    )
   end
 
   def update(conn, %{"id" => id, "article" => article_params}) do
@@ -90,15 +112,24 @@ defmodule CenatusLtd.ArticleController do
 
     changeset = Article.changeset(article, article_params)
 
+    sections =
+      Repo.all(Section)
+      |> Enum.map(fn s -> {s.name, s.id} end)
+
     case Repo.update(changeset) do
       {:ok, article} ->
         conn
         |> put_flash(:info, "Article updated successfully.")
         |> redirect(to: article_path(conn, :show, article))
+
       {:error, changeset} ->
-        render(conn, "edit.html", article: article, changeset: changeset,
+        render(conn, "edit.html",
+          article: article,
+          sections: sections,
+          changeset: changeset,
           tags: taglist_from(article.tags),
-          tech_tags: taglist_from(article.tech_tags))
+          tech_tags: taglist_from(article.tech_tags)
+        )
     end
   end
 
@@ -115,7 +146,7 @@ defmodule CenatusLtd.ArticleController do
   end
 
   defp taglist_from(tags) do
-    Enum.map(tags, fn(tag) -> tag.name end)
-      |> Enum.join(", ")
+    Enum.map(tags, fn tag -> tag.name end)
+    |> Enum.join(", ")
   end
 end

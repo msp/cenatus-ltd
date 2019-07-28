@@ -38,7 +38,7 @@ defmodule CenatusLtd.Article do
     tech_tags_list = params["tech_tags"] || params[:tech_tags] || ""
 
     struct
-    |> cast(params, [:title, :summary, :content, :image_url, :published_at])
+    |> cast(params, [:title, :summary, :content, :image_url, :published_at, :section_id])
     |> CenatusLtd.ModelUtils.slugify(:title)
     |> put_assoc(:tags, parse_tags_from(tags_list) |> Enum.map(&get_or_insert_tag/1))
     |> put_assoc(:tech_tags, parse_tags_from(tech_tags_list) |> Enum.map(&get_or_insert_tag/1))

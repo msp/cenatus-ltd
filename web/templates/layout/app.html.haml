@@ -11,6 +11,7 @@
     %meta(name="google-site-verification" content="TY-DmtIL7_4UM5nAjoOUFUjKXl6w_IAWlijEhvyxQ0Y")
     %title Cenatus
     %link(href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet")
+    %link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
     %link(rel="stylesheet" href='#{static_path(@conn, "/css/app.css")}')
 
 
@@ -21,11 +22,11 @@
           .col-md-6.logo
             %a{:href => "/"}
               = render "cenatus-logo.html"
-          .col-xs-4.col-md-2.category.cl-effect-1
+          .col-4.col-md-2.category.cl-effect-1
             %a{:href => "/creative"} creative
-          .col-xs-4.col-md-2.category.cl-effect-1
+          .col-4.col-md-2.category.cl-effect-1
             %a{:href => "/technology"} technology
-          .col-xs-4.col-md-2.category.cl-effect-1
+          .col-4.col-md-2.category.cl-effect-1
             %a{:href => "/production"} production
 
       %p.alert.alert-info(role="alert")= get_flash(@conn, :info)

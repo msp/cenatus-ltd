@@ -18,6 +18,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :section_id, class: "control-label" %>
+    <%= select f, :section_id, @sections %>
+    <%= error_tag f, :section_id %>
+  </div>
+
+  <div class="form-group">
     <%= label f, :content, class: "control-label" %>
     <%= textarea f, :content, class: "form-control" %>
     <%= error_tag f, :content %>

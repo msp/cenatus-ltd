@@ -161,6 +161,12 @@ article.preview, article.show, main {
   }
 }
 
+.blog-articles {
+  article.preview {
+    @include divider;
+  }
+}
+
 .published {
   font-size: smaller;
   margin-top: 40px;
