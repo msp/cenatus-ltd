@@ -29,6 +29,8 @@ defmodule CenatusLtd.Router do
     get("/about", PageController, :about)
     get("/contact", PageController, :contact)
 
+    get("/rss", FeedController, :index)
+
     resources("/articles", ArticleController, only: [:show])
     resources("/blog", BlogController, only: [:index, :show])
     resources("/categories", CategoryController, only: [:show])

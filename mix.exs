@@ -72,7 +72,9 @@ defmodule CenatusLtd.Mixfile do
       #  {:httpoison, "0.0.0", override: true},
       {:hackney, "~> 1.6", override: true},
       {:extwitter, "~> 0.8"},
-      {:elixirfm, "~> 0.0.10"}
+      {:elixirfm, "~> 0.0.10"},
+      {:html_sanitize_ex, "~> 1.2"},
+      {:floki, "~> 0.21.0"}
     ]
   end
 
