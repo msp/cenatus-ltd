@@ -1,8 +1,8 @@
-defmodule CenatusLtd.Section do
+defmodule CenatusLtd.Category do
   use CenatusLtd.Web, :model
 
   @primary_key {:id, CenatusLtd.Permalink, autogenerate: true}
-  schema "sections" do
+  schema "categories" do
     field(:name, :string)
     field(:slug, :string)
 
@@ -21,7 +21,7 @@ defmodule CenatusLtd.Section do
     |> validate_required([:name])
   end
 
-  defimpl Phoenix.Param, for: CenatusLtd.Section do
+  defimpl Phoenix.Param, for: CenatusLtd.Category do
     def to_param(%{slug: slug, id: id}) do
       "#{id}-#{slug}"
     end

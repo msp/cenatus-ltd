@@ -203,15 +203,6 @@ article.preview, article.show, main {
   font-size: $cenatus-font-size - 2;
   line-height: $cenatus-line-height - 5;
 
-  .tags, .tech_tags {
-    a {
-      color: $cenatus-font-color;
-      &:hover {
-        color: $cenatus-font-color;
-      }
-    }
-  }
-
   .twitter {
     .tweet {
       padding-top: 5px;
@@ -259,21 +250,38 @@ article.preview, article.show, main {
       padding-left: 16px;
     }
   }
+}
 
-.tags, .tech_tags {
-    li {
-      display: inline-block;
+.tags, .tech_tags, .categories {
+  font-size: $cenatus-font-size - 2;
+  line-height: $cenatus-line-height - 5;
+
+  li {
+    display: inline-block;
+  }
+
+  .tag, .category {
+    &:before {
+      content: ", "
+    }
+
+    &:first-of-type{
+      &:before {
+        content: ""
+      }
+    }
+    a {
+      color: $cenatus-font-color;
+      &:hover {
+        color: $cenatus-font-color;
+      }
     }
   }
 }
 
-.tags .tag:before, .tech_tags .tag:before {
-  content: ", "
-}
-
-.tags .tag:first-of-type:before, .tech_tags .tag:first-of-type:before {
-  content: ""
-}
+// .tags .tag:first-of-type:before, .tech_tags .tag:first-of-type:before {
+//   content: ""
+// }
 
 
 .overlay {

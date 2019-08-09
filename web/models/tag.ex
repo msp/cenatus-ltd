@@ -3,11 +3,20 @@ defmodule CenatusLtd.Tag do
 
   @primary_key {:id, CenatusLtd.Permalink, autogenerate: true}
   schema "tags" do
-    field :name,          :string
-    field :slug,          :string
+    field(:name, :string)
+    field(:slug, :string)
 
-    many_to_many :articles, CenatusLtd.Article, join_through: "article_tags", on_delete: :delete_all, on_replace: :delete
-    many_to_many :tech_articles, CenatusLtd.Article, join_through: "article_tech_tags", on_delete: :delete_all, on_replace: :delete
+    many_to_many(:articles, CenatusLtd.Article,
+      join_through: "article_tags",
+      on_delete: :delete_all,
+      on_replace: :delete
+    )
+
+    many_to_many(:tech_articles, CenatusLtd.Article,
+      join_through: "article_tech_tags",
+      on_delete: :delete_all,
+      on_replace: :delete
+    )
 
     timestamps()
   end

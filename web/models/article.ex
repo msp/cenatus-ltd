@@ -14,6 +14,7 @@ defmodule CenatusLtd.Article do
     field(:slug, :string)
 
     belongs_to(:section, CenatusLtd.Section)
+    belongs_to(:category, CenatusLtd.Category)
 
     many_to_many(:tags, CenatusLtd.Tag,
       join_through: "article_tags",
@@ -38,7 +39,15 @@ defmodule CenatusLtd.Article do
     tech_tags_list = params["tech_tags"] || params[:tech_tags] || ""
 
     struct
-    |> cast(params, [:title, :summary, :content, :image_url, :published_at, :section_id])
+    |> cast(params, [
+      :title,
+      :summary,
+      :content,
+      :image_url,
+      :published_at,
+      :section_id,
+      :category_id
+    ])
     |> CenatusLtd.ModelUtils.slugify(:title)
     |> put_assoc(:tags, parse_tags_from(tags_list) |> Enum.map(&get_or_insert_tag/1))
     |> put_assoc(:tech_tags, parse_tags_from(tech_tags_list) |> Enum.map(&get_or_insert_tag/1))

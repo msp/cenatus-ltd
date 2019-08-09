@@ -29,10 +29,12 @@ defmodule CenatusLtd.Router do
     get("/about", PageController, :about)
     get("/contact", PageController, :contact)
 
-    resources("/blog", BlogController, only: [:index, :show])
     resources("/articles", ArticleController, only: [:show])
-    resources("/tags", TagController, only: [:show])
+    resources("/blog", BlogController, only: [:index, :show])
+    resources("/categories", CategoryController, only: [:show])
+    resources("/sections", SectionController, only: [:show])
     resources("/sessions", SessionController, only: [:new, :create, :delete])
+    resources("/tags", TagController, only: [:show])
 
     get("/sitemaps/sitemap1.xml", Redirector,
       external: "https://s3.eu-central-1.amazonaws.com/cenatus/sitemap1.xml"
@@ -92,8 +94,9 @@ defmodule CenatusLtd.Router do
     get("/", PageController, :admin)
 
     resources("/articles", ArticleController, except: [:show])
+    resources("/categories", CategoryController, except: [:show])
+    resources("/sections", SectionController, except: [:show])
     resources("/tags", TagController, except: [:show])
-    resources("/sections", SectionController)
     resources("/users", UserController)
   end
 

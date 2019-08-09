@@ -3,13 +3,14 @@ defmodule CenatusLtd.TagController do
 
   alias CenatusLtd.Tag
 
-  plug CenatusLtd.LoadAllTags
-  plug :load_periodic
+  plug(CenatusLtd.LoadAllTags)
+  plug(:load_periodic)
 
   def index(conn, _params) do
-    tags = Repo.all(from tag in Tag, order_by: [asc: tag.name])
-    |> Repo.preload(:articles)
-    |> Repo.preload(:tech_articles)
+    tags =
+      Repo.all(from(tag in Tag, order_by: [asc: tag.name]))
+      |> Repo.preload(:articles)
+      |> Repo.preload(:tech_articles)
 
     render(conn, "index.html", tags: tags)
   end
@@ -27,17 +28,22 @@ defmodule CenatusLtd.TagController do
         conn
         |> put_flash(:info, "Tag created successfully.")
         |> redirect(to: tag_path(conn, :index))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    tag = Repo.get!(Tag, id)
-    |> Repo.preload(:articles)
-    |> Repo.preload(:tech_articles)
+    tag =
+      Repo.get!(Tag, id)
+      |> Repo.preload(:articles)
+      |> Repo.preload(:tech_articles)
 
-    render(conn, CenatusLtd.SharedView, "articles.html", articles: tag.articles ++ tag.tech_articles, page_title: "'#{tag.name}' articles")
+    render(conn, CenatusLtd.SharedView, "articles.html",
+      articles: tag.articles ++ tag.tech_articles,
+      page_title: "'#{tag.name}' articles"
+    )
   end
 
   def edit(conn, %{"id" => id}) do
@@ -55,6 +61,7 @@ defmodule CenatusLtd.TagController do
         conn
         |> put_flash(:info, "Tag updated successfully.")
         |> redirect(to: tag_path(conn, :show, tag))
+
       {:error, changeset} ->
         render(conn, "edit.html", tag: tag, changeset: changeset)
     end
@@ -73,7 +80,7 @@ defmodule CenatusLtd.TagController do
   end
 
   defp load_periodic(conn, _options) do
-    conn = assign(conn, :tweets, CenatusLtd.Periodically.tweets)
-    assign(conn, :tracks, CenatusLtd.Periodically.tracks)
+    conn = assign(conn, :tweets, CenatusLtd.Periodically.tweets())
+    assign(conn, :tracks, CenatusLtd.Periodically.tracks())
   end
 end

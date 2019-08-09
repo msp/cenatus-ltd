@@ -1,5 +1,6 @@
 <%= render "form.html", changeset: @changeset,
                         sections: @sections,
+                        categories: @categories,
                         tags: @tags,
                         tech_tags: @tech_tags,
                         action: article_path(@conn, :update, @article) %>

@@ -1,20 +1,22 @@
 = render_page_title(@conn)
 
 .row.content.blog
-  -# col-md-9 on md if we have an aside
-  .col-12.col-md-12.blog-articles
+  .col-12.col-md-9.blog-articles
     - for {article, index} <- Enum.with_index(@articles) do
       = render "blog_article_preview.html", article: article, conn: @conn
 
-  -# TODO: actually, this should be Blog categories, not site sections
-  -# .col-12.col-md-3.order-first.order-md-last.blog-aside
-  -#   %aside.px-md-5
-  -#     %h4 Sections
-  -#     %ul
-  -#       - for {section, index} <- Enum.with_index(@sections) do
-  -#         %li
-  -#           %a.link{href='#{section_path(@conn, :show, section)}'}
-  -#             = section.name
+  .col-12.col-md-3.order-first.order-md-last.blog-aside
+    %aside.px-md-5
+      %h4 categories
+      .categories
+        = CenatusLtd.ArticleView.render_categories_as_links_from(@conn, @categories)
+
+    -# TODO: Need a separate blog tags collection or can we filter backwards to
+    -# include on Blog articles?
+    %aside.px-md-5
+      %h4 tags
+      .tags
+        = CenatusLtd.ArticleView.render_tags_as_links_from(@conn, @tags)
 
 .row.meta
   .col-md-4

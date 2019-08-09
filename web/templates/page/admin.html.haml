@@ -5,8 +5,10 @@
         %li
           = link "users", to: user_path(@conn, :index)
         %li
+          = link "articles", to: article_path(@conn, :index)
+        %li
           = link "sections", to: section_path(@conn, :index)
         %li
-          = link "articles", to: article_path(@conn, :index)
+          = link "categories", to: category_path(@conn, :index)
         %li
           = link "tags", to: tag_path(@conn, :index)

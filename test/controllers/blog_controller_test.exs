@@ -20,7 +20,8 @@ defmodule CenatusLtd.BlogControllerTest do
     changeset =
       Section.changeset(
         %Section{},
-        %{name: "Blog"}
+        %{name: "Blog section
+        "}
       )
 
     blog = Repo.insert!(changeset)

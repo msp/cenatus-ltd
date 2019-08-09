@@ -5,6 +5,7 @@ defmodule CenatusLtd.BlogController do
 
   plug(CenatusLtd.LoadAllTags)
   plug(CenatusLtd.LoadAllSections)
+  plug(CenatusLtd.LoadAllCategories)
   plug(:load_periodic)
 
   def index(conn, _params) do

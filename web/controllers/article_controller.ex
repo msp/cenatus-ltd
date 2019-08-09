@@ -1,7 +1,9 @@
 defmodule CenatusLtd.ArticleController do
   use CenatusLtd.Web, :controller
 
-  alias CenatusLtd.{Article, Section}
+  alias CenatusLtd.{Article, Category, Section}
+
+  plug(CenatusLtd.LoadAllCategories)
 
   def index(conn, _params) do
     articles =
@@ -19,7 +21,17 @@ defmodule CenatusLtd.ArticleController do
       Repo.all(Section)
       |> Enum.map(fn s -> {s.name, s.id} end)
 
-    render(conn, "new.html", changeset: changeset, tags: [], tech_tags: [], sections: sections)
+    categories =
+      Repo.all(Category)
+      |> Enum.map(fn c -> {c.name, c.id} end)
+
+    render(conn, "new.html",
+      changeset: changeset,
+      tags: [],
+      tech_tags: [],
+      sections: sections,
+      categories: categories
+    )
   end
 
   def create(conn, %{"article" => article_params}) do
@@ -93,11 +105,17 @@ defmodule CenatusLtd.ArticleController do
       Repo.all(Section)
       |> Enum.map(fn s -> {s.name, s.id} end)
 
+    categories =
+      Repo.all(Category)
+      |> Enum.map(fn c -> {c.name, c.id} end)
+
     changeset = Article.changeset(article)
 
     render(conn, "edit.html",
       article: article,
       sections: sections,
+      categories: categories,
+      msp: [1, 2, 3],
       changeset: changeset,
       tags: taglist_from(article.tags),
       tech_tags: taglist_from(article.tech_tags)
