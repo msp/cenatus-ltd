@@ -4,12 +4,16 @@
       %image{data-src='#{@article.image_url}' class='cld-responsive'}
   .col-md-6.related
     - if length(@related) > 0 do
-      %h3.lp related articles
+      %h3.lp related posts
       %ul
         - for related <- @related do
           %li
-            %a{href='#{article_path(@conn, :show, related)}'}
+            %a{href='#{blog_path(@conn, :show, related)}'}
               = related.title
+          %li
+            %a{href='#{blog_path(@conn, :index)}'}
+              All posts
+
 
 .row
   .col-md-12

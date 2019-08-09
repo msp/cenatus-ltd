@@ -36,13 +36,21 @@
         = render @view_module, @view_template, assigns
 
       %footer
-        .row
-          .col-xs-12.col-md-10.address
+        .row.justify-content-between
+          .col-xs-12.col-md-4.address
             = render CenatusLtd.SharedView, "address.html"
-          .col-xs-12.col-md-2.links
+          .col-xs-12.col-md-3.links
             %ul
               %li
                 %a{:href => "/about"} about
+              %li |
+              %li
+                %a{href='#{blog_path(@conn, :index)}'}
+                blog
+              %li |
+              %li
+                %a{href='/rss'}
+                rss
               %li |
               %li
                 %a{:href => "/contact"} contact

@@ -167,6 +167,17 @@ article.preview, article.show, main {
   }
 }
 
+.blog-articles > div.row {
+  &:last-child {
+    margin-bottom: 0px !important;
+
+    article {
+      border-bottom: none;
+    }
+  }
+}
+
+
 .published {
   font-size: smaller;
   margin-top: 40px;

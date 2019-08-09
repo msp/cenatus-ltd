@@ -1,18 +1,20 @@
 = render_page_title(@conn)
 
 .row.content.blog
-  .col-md-9.blog-articles
+  -# col-md-9 on md if we have an aside
+  .col-12.col-md-12.blog-articles
     - for {article, index} <- Enum.with_index(@articles) do
       = render "blog_article_preview.html", article: article, conn: @conn
 
-  .col-md-3.blog-aside
-    %aside.px-5
-      %h4 Sections
-      %ul
-        - for {section, index} <- Enum.with_index(@sections) do
-          %li
-            %a.link{href='#{section_path(@conn, :show, section)}'}
-              = section.name
+  -# TODO: actually, this should be Blog categories, not site sections
+  -# .col-12.col-md-3.order-first.order-md-last.blog-aside
+  -#   %aside.px-md-5
+  -#     %h4 Sections
+  -#     %ul
+  -#       - for {section, index} <- Enum.with_index(@sections) do
+  -#         %li
+  -#           %a.link{href='#{section_path(@conn, :show, section)}'}
+  -#             = section.name
 
 .row.meta
   .col-md-4
