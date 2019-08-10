@@ -27,7 +27,7 @@ defmodule CenatusLtdWeb.TagController do
       {:ok, _tag} ->
         conn
         |> put_flash(:info, "Tag created successfully.")
-        |> redirect(to: tag_path(conn, :index))
+        |> redirect(to: Routes.tag_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -60,7 +60,7 @@ defmodule CenatusLtdWeb.TagController do
       {:ok, tag} ->
         conn
         |> put_flash(:info, "Tag updated successfully.")
-        |> redirect(to: tag_path(conn, :show, tag))
+        |> redirect(to: Routes.tag_path(conn, :show, tag))
 
       {:error, changeset} ->
         render(conn, "edit.html", tag: tag, changeset: changeset)
@@ -76,7 +76,7 @@ defmodule CenatusLtdWeb.TagController do
 
     conn
     |> put_flash(:info, "Tag deleted successfully.")
-    |> redirect(to: tag_path(conn, :index))
+    |> redirect(to: Routes.tag_path(conn, :index))
   end
 
   defp load_periodic(conn, _options) do

@@ -23,7 +23,7 @@ defmodule CenatusLtdWeb.CategoryController do
       {:ok, _category} ->
         conn
         |> put_flash(:info, "Category created successfully.")
-        |> redirect(to: category_path(conn, :index))
+        |> redirect(to: Routes.category_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -56,7 +56,7 @@ defmodule CenatusLtdWeb.CategoryController do
       {:ok, category} ->
         conn
         |> put_flash(:info, "Category updated successfully.")
-        |> redirect(to: category_path(conn, :show, category))
+        |> redirect(to: Routes.category_path(conn, :show, category))
 
       {:error, changeset} ->
         render(conn, "edit.html", category: category, changeset: changeset)
@@ -72,7 +72,7 @@ defmodule CenatusLtdWeb.CategoryController do
 
     conn
     |> put_flash(:info, "Category deleted successfully.")
-    |> redirect(to: category_path(conn, :index))
+    |> redirect(to: Routes.category_path(conn, :index))
   end
 
   defp load_periodic(conn, _options) do

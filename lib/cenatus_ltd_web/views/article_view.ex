@@ -6,7 +6,7 @@ defmodule CenatusLtdWeb.ArticleView do
       content_tag(
         :span,
         content_tag(:a, tag.name,
-          href: tag_path(conn, :show, tag),
+          href: Routes.tag_path(conn, :show, tag),
           class: ""
         ),
         class: "tag"
@@ -21,7 +21,7 @@ defmodule CenatusLtdWeb.ArticleView do
       content_tag(
         :span,
         content_tag(:a, category.name,
-          href: category_path(conn, :show, category),
+          href: Routes.category_path(conn, :show, category),
           class: ""
         ),
         class: "category"

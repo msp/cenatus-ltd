@@ -1,6 +1,6 @@
 <h2>New tag</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: tag_path(@conn, :create) %>
+                        action: Routes.tag_path(@conn, :create) %>
 
-<%= link "Back", to: tag_path(@conn, :index) %>
+<%= link "Back", to: Routes.tag_path(@conn, :index) %>

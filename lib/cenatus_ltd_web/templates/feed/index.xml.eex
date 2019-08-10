@@ -5,20 +5,20 @@
     <description>
       Creative Technology Production
     </description>
-    <link><%= article_url(@conn, :index) %></link>
-    <atom:link href="<%= feed_url(@conn, :index) %>" rel="self" type="application/rss+xml" />
+    <link><%= Routes.article_url(@conn, :index) %></link>
+    <atom:link href="<%= Routes.feed_url(@conn, :index) %>" rel="self" type="application/rss+xml" />
     <%= for post <- @items do %>
       <item>
         <title>
           <![CDATA[<%= post.section.name %> - #<%= post.title %>]]>
         </title>
-        <link><%= article_url(@conn, :show, post) %></link>
+        <link><%= Routes.article_url(@conn, :show, post) %></link>
         <description>
           <!-- <![CDATA[<%= post.content |> CenatusLtd.Markdown.to_html() %>]]> -->
         </description>
         <dc:creator>msp</dc:creator>
         <pubDate><%= CenatusLtdWeb.SharedView.rss_date(post) %></pubDate>
-        <guid isPermaLink="true"><%= article_url(@conn, :show, post) %></guid>
+        <guid isPermaLink="true"><%= Routes.article_url(@conn, :show, post) %></guid>
       </item>
     <% end %>
   </channel>

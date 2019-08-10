@@ -16,13 +16,13 @@
       <td><%= article_count_for(tag) %></td>
 
       <td class="text-right">
-        <%= link "Show", to: tag_path(@conn, :show, tag), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: tag_path(@conn, :edit, tag), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: tag_path(@conn, :delete, tag), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Show", to: Routes.tag_path(@conn, :show, tag), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: Routes.tag_path(@conn, :edit, tag), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: Routes.tag_path(@conn, :delete, tag), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New tag", to: tag_path(@conn, :new) %>
+<%= link "New tag", to: Routes.tag_path(@conn, :new) %>

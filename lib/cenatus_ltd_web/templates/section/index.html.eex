@@ -15,13 +15,13 @@
       </td>
 
       <td class="text-right">
-        <%= link "Show", to: section_path(@conn, :show, section), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: section_path(@conn, :edit, section), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: section_path(@conn, :delete, section), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Show", to: Routes.section_path(@conn, :show, section), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: Routes.section_path(@conn, :edit, section), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: Routes.section_path(@conn, :delete, section), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New section", to: section_path(@conn, :new) %>
+<%= link "New section", to: Routes.section_path(@conn, :new) %>

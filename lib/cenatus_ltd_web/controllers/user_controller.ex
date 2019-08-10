@@ -22,7 +22,7 @@ defmodule CenatusLtdWeb.UserController do
         conn
         |> CenatusLtdWeb.Auth.login(user)
         |> put_flash(:info, "#{user.name} created!")
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: Routes.user_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -47,7 +47,7 @@ defmodule CenatusLtdWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: Routes.user_path(conn, :show, user))
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
@@ -62,6 +62,6 @@ defmodule CenatusLtdWeb.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: Routes.user_path(conn, :index))
   end
 end

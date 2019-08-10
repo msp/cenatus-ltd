@@ -31,10 +31,11 @@ defmodule CenatusLtdWeb do
       use Phoenix.Controller, namespace: CenatusLtdWeb
 
       alias CenatusLtd.Repo
+      alias CenatusLtdWeb.Router.Helpers, as: Routes
+
       import Ecto
       import Ecto.Query
 
-      import CenatusLtdWeb.Router.Helpers
       import CenatusLtdWeb.Gettext
       import CenatusLtdWeb.Auth, only: [authenticate_user: 2]
     end
@@ -59,7 +60,8 @@ defmodule CenatusLtdWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import CenatusLtdWeb.Router.Helpers
+      alias CenatusLtdWeb.Router.Helpers, as: Routes
+
       import CenatusLtdWeb.ErrorHelpers
       import CenatusLtdWeb.Gettext
       import CenatusLtdWeb.SharedFormatters

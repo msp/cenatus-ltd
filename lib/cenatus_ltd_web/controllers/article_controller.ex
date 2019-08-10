@@ -45,7 +45,7 @@ defmodule CenatusLtdWeb.ArticleController do
       {:ok, _article} ->
         conn
         |> put_flash(:info, "Article created successfully.")
-        |> redirect(to: article_path(conn, :index))
+        |> redirect(to: Routes.article_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html",
@@ -138,7 +138,7 @@ defmodule CenatusLtdWeb.ArticleController do
       {:ok, article} ->
         conn
         |> put_flash(:info, "Article updated successfully.")
-        |> redirect(to: article_path(conn, :show, article))
+        |> redirect(to: Routes.article_path(conn, :show, article))
 
       {:error, changeset} ->
         render(conn, "edit.html",
@@ -160,7 +160,7 @@ defmodule CenatusLtdWeb.ArticleController do
 
     conn
     |> put_flash(:info, "Article deleted successfully.")
-    |> redirect(to: article_path(conn, :index))
+    |> redirect(to: Routes.article_path(conn, :index))
   end
 
   defp taglist_from(tags) do

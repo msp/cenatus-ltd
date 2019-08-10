@@ -10,7 +10,7 @@ defmodule CenatusLtdWeb.SessionController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome back!")
-        |> redirect(to: page_path(conn, :admin))
+        |> redirect(to: Routes.page_path(conn, :admin))
 
       {:error, _reason, conn} ->
         conn |> put_flash(:error, "Invalid username/password combination") |> render("new.html")
@@ -20,6 +20,6 @@ defmodule CenatusLtdWeb.SessionController do
   def delete(conn, _) do
     conn
     |> CenatusLtdWeb.Auth.logout()
-    |> redirect(to: page_path(conn, :home))
+    |> redirect(to: Routes.page_path(conn, :home))
   end
 end

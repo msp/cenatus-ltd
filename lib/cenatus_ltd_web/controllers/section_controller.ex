@@ -23,7 +23,7 @@ defmodule CenatusLtdWeb.SectionController do
       {:ok, _section} ->
         conn
         |> put_flash(:info, "Section created successfully.")
-        |> redirect(to: section_path(conn, :index))
+        |> redirect(to: Routes.section_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -49,7 +49,7 @@ defmodule CenatusLtdWeb.SectionController do
       {:ok, section} ->
         conn
         |> put_flash(:info, "Section updated successfully.")
-        |> redirect(to: section_path(conn, :show, section))
+        |> redirect(to: Routes.section_path(conn, :show, section))
 
       {:error, changeset} ->
         render(conn, "edit.html", section: section, changeset: changeset)
@@ -65,6 +65,6 @@ defmodule CenatusLtdWeb.SectionController do
 
     conn
     |> put_flash(:info, "Section deleted successfully.")
-    |> redirect(to: section_path(conn, :index))
+    |> redirect(to: Routes.section_path(conn, :index))
   end
 end

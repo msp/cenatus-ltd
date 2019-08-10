@@ -3,12 +3,12 @@
     %article
       %ul
         %li
-          = link "users", to: user_path(@conn, :index)
+          = link "users", to: Routes.user_path(@conn, :index)
         %li
-          = link "articles", to: article_path(@conn, :index)
+          = link "articles", to: Routes.article_path(@conn, :index)
         %li
-          = link "sections", to: section_path(@conn, :index)
+          = link "sections", to: Routes.section_path(@conn, :index)
         %li
-          = link "categories", to: category_path(@conn, :index)
+          = link "categories", to: Routes.category_path(@conn, :index)
         %li
-          = link "tags", to: tag_path(@conn, :index)
+          = link "tags", to: Routes.tag_path(@conn, :index)

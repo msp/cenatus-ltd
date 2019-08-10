@@ -12,7 +12,7 @@
     %title Cenatus
     %link(href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet")
     %link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
-    %link(rel="stylesheet" href='#{static_path(@conn, "/css/app.css")}')
+    %link(rel="stylesheet" href='#{Routes.static_path(@conn, "/css/app.css")}')
 
 
   %body(class='#{CenatusLtdWeb.PageView.handler_info @conn}')
@@ -45,7 +45,7 @@
                 %a{:href => "/about"} about
               %li |
               %li
-                %a{href='#{blog_path(@conn, :index)}'}
+                %a{href='#{Routes.blog_path(@conn, :index)}'}
                 blog
               %li |
               %li
@@ -61,17 +61,17 @@
           - if @current_user do
             %ul
               %li
-                = link "admin", to: page_path(@conn, :admin)
+                = link "admin", to: Routes.page_path(@conn, :admin)
               %li |
               %li
-                = link "log out", to: session_path(@conn, :delete, @current_user), method: "delete"
+                = link "log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete"
 
     %script(src='https://code.jquery.com/jquery-2.2.4.js')
     %script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js')
     %script(type='text/javascript')
       = raw("const mix_env = '#{Mix.env}';")
 
-    %script(src='#{static_path(@conn, "/js/app.js")}')
+    %script(src='#{Routes.static_path(@conn, "/js/app.js")}')
 
     %script(type="text/javascript")
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

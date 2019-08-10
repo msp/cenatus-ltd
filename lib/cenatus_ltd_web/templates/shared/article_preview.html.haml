@@ -1,14 +1,14 @@
 .col-md-6
   -# .overlay{id='article-#{article.id}'}
-  -#   %a.link{href='#{article_path(@conn, :show, article)}'}
+  -#   %a.link{href='#{Routes.article_path(@conn, :show, article)}'}
   -#     view article
 
   .hotspot
     %article.preview
-      %a.link{href='#{article_path(@conn, :show, @article)}'}
+      %a.link{href='#{Routes.article_path(@conn, :show, @article)}'}
         -# %image{src='/images/production.jpg'}
         %image{data-src='#{@article.image_url}' class='cld-responsive'}
       %h4.lp
-        %a.link{href='#{article_path(@conn, :show, @article)}'}
+        %a.link{href='#{Routes.article_path(@conn, :show, @article)}'}
           = @article.title
       .summary.lp= @article.summary |> as_html

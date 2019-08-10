@@ -7,5 +7,5 @@
   </li>
 </ul>
 
-<%= link "Edit", to: category_path(@conn, :edit, @category) %>
-<%= link "Back", to: category_path(@conn, :index) %>
+<%= link "Edit", to: Routes.category_path(@conn, :edit, @category) %>
+<%= link "Back", to: Routes.category_path(@conn, :index) %>

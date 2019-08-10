@@ -7,5 +7,5 @@
   </li>
 </ul>
 
-<%= link "Edit", to: section_path(@conn, :edit, @section) %>
-<%= link "Back", to: section_path(@conn, :index) %>
+<%= link "Edit", to: Routes.section_path(@conn, :edit, @section) %>
+<%= link "Back", to: Routes.section_path(@conn, :index) %>

@@ -1,6 +1,6 @@
 <h2>New section</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: section_path(@conn, :create) %>
+                        action: Routes.section_path(@conn, :create) %>
 
-<%= link "Back", to: section_path(@conn, :index) %>
+<%= link "Back", to: Routes.section_path(@conn, :index) %>

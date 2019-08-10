@@ -9,5 +9,5 @@
 
 </ul>
 
-<%= link "Edit", to: tag_path(@conn, :edit, @tag) %>
-<%= link "Back", to: tag_path(@conn, :index) %>
+<%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag) %>
+<%= link "Back", to: Routes.tag_path(@conn, :index) %>

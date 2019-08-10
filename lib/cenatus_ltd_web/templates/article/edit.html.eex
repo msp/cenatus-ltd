@@ -3,6 +3,6 @@
                         categories: @categories,
                         tags: @tags,
                         tech_tags: @tech_tags,
-                        action: article_path(@conn, :update, @article) %>
+                        action: Routes.article_path(@conn, :update, @article) %>
 
-<%= link "Back", to: article_path(@conn, :index) %>
+<%= link "Back", to: Routes.article_path(@conn, :index) %>

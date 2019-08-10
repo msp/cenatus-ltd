@@ -8,10 +8,10 @@
       %ul
         - for related <- @related do
           %li
-            %a{href='#{blog_path(@conn, :show, related)}'}
+            %a{href='#{Routes.blog_path(@conn, :show, related)}'}
               = related.title
           %li
-            %a{href='#{blog_path(@conn, :index)}'}
+            %a{href='#{Routes.blog_path(@conn, :index)}'}
               All posts
 
 
@@ -21,7 +21,7 @@
       %h3.lp
         = @article.title
         - if @current_user do
-          %a.smaller{href= '#{article_path(@conn, :edit, @article)}'}
+          %a.smaller{href= '#{Routes.article_path(@conn, :edit, @article)}'}
             [edit]
 
       .content.lp= @article.content |> as_html
