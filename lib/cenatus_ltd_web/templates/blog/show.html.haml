@@ -1,4 +1,4 @@
-.row
+.row.mt-4
   .col-md-6
     %article.show
       %image{data-src='#{@article.image_url}' class='cld-responsive'}
@@ -25,13 +25,14 @@
             [edit]
 
       .content.lp= @article.content |> as_html
+
       %p.lp.nbm.tags
         Section:
         = @article.section.name
       - if length(@article.tags) > 0 do
         %p.lp.nbm.tags
           Filed as:
-          -# = render_tags_as_links_from(@conn, @article.tags)
+          = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @article.tags)
       %p.lp.published
         Published on
         = @article.published_at |> formatted

@@ -108,6 +108,8 @@ defmodule CenatusLtdWeb.ArticleController do
     categories =
       Repo.all(Category)
       |> Enum.map(fn c -> {c.name, c.id} end)
+      |> Enum.concat([{"Please select", ""}])
+      |> Enum.reverse()
 
     changeset = Article.changeset(article)
 
@@ -115,7 +117,6 @@ defmodule CenatusLtdWeb.ArticleController do
       article: article,
       sections: sections,
       categories: categories,
-      msp: [1, 2, 3],
       changeset: changeset,
       tags: taglist_from(article.tags),
       tech_tags: taglist_from(article.tech_tags)

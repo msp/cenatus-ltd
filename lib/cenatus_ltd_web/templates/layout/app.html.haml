@@ -42,21 +42,19 @@
           .col-xs-12.col-md-3.links
             %ul
               %li
-                %a{:href => "/about"} about
+                %a{href: "/about"} about
               %li |
               %li
-                %a{href='#{Routes.blog_path(@conn, :index)}'}
-                blog
+                %a{href: '#{Routes.blog_path(@conn, :index)}'} blog
               %li |
               %li
-                %a{href='/rss'}
-                rss
+                %a{href: "/rss"} rss
               %li |
               %li
-                %a{:href => "/contact"} contact
+                %a{href: "/contact"} contact
               -# %li |
               -# %li
-              -#   %a{:href => "https://madmimi.com/signups/subscribe/27129", target: "_blank"} subscribe
+              -#   %a{href: "https://madmimi.com/signups/subscribe/27129", target: "_blank"} subscribe
         .row
           - if @current_user do
             %ul
