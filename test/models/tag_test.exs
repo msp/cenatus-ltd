@@ -1,7 +1,7 @@
-defmodule CenatusLtd.TagTest do
-  use CenatusLtd.ModelCase
+defmodule CenatusLtdWeb.TagTest do
+  use CenatusLtdWeb.ModelCase
 
-  alias CenatusLtd.Tag
+  alias CenatusLtdWeb.Tag
 
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}

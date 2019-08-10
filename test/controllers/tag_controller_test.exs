@@ -1,13 +1,13 @@
-defmodule CenatusLtd.TagControllerTest do
-  use CenatusLtd.ConnCase
+defmodule CenatusLtdWeb.TagControllerTest do
+  use CenatusLtdWeb.ConnCase
 
-  alias CenatusLtd.Tag
+  alias CenatusLtdWeb.Tag
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
   describe "authorized routes" do
     setup %{conn: conn} do
-      admin_user = %CenatusLtd.User{id: 1, username: "admin"}
+      admin_user = %CenatusLtdWeb.User{id: 1, username: "admin"}
       {:ok, conn: assign(conn, :current_user, admin_user), user: admin_user}
     end
 
@@ -63,7 +63,7 @@ defmodule CenatusLtd.TagControllerTest do
   describe "public routes" do
     test "shows chosen resource", %{conn: conn} do
       attrs =  %{title: "some title", summary: "some content", content: "some content", published_at: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}}
-      changeset = CenatusLtd.Article.changeset(%CenatusLtd.Article{}, Map.merge(attrs, %{tags: "creative"}))
+      changeset = CenatusLtdWeb.Article.changeset(%CenatusLtdWeb.Article{}, Map.merge(attrs, %{tags: "creative"}))
       article = Repo.insert! changeset
 
       conn = get conn, tag_path(conn, :show, Enum.at(article.tags, 0))

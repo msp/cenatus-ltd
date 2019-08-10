@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cenatus Ltd</title>
+    <description>
+      Creative Technology Production
+    </description>
+    <link><%= article_url(@conn, :index) %></link>
+    <atom:link href="<%= feed_url(@conn, :index) %>" rel="self" type="application/rss+xml" />
+    <%= for post <- @items do %>
+      <item>
+        <title>
+          <![CDATA[<%= post.section.name %> - #<%= post.title %>]]>
+        </title>
+        <link><%= article_url(@conn, :show, post) %></link>
+        <description>
+          <!-- <![CDATA[<%= post.content |> CenatusLtd.Markdown.to_html() %>]]> -->
+        </description>
+        <dc:creator>msp</dc:creator>
+        <pubDate><%= CenatusLtdWeb.SharedView.rss_date(post) %></pubDate>
+        <guid isPermaLink="true"><%= article_url(@conn, :show, post) %></guid>
+      </item>
+    <% end %>
+  </channel>
+</rss>

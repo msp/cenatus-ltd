@@ -1,5 +1,5 @@
-defmodule CenatusLtd.PageControllerTest do
-  use CenatusLtd.ConnCase
+defmodule CenatusLtdWeb.PageControllerTest do
+  use CenatusLtdWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     creative_article = insert_article(%{"title" => "creative article"})

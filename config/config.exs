@@ -10,12 +10,11 @@ config :cenatus_ltd,
   ecto_repos: [CenatusLtd.Repo]
 
 # Configures the endpoint
-config :cenatus_ltd, CenatusLtd.Endpoint,
+config :cenatus_ltd, CenatusLtdWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "jiBBNx/vDs11KHYmGbS6RGTAaINvSZBRyRGQTHwJWYCrJks+4AtTOCt+vkz5xAfR",
-  render_errors: [view: CenatusLtd.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: CenatusLtd.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: CenatusLtdWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: CenatusLtdWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -23,9 +22,8 @@ config :logger, :console,
   metadata: [:request_id]
 
 # HAML
-config :phoenix, :template_engines,
-  haml: PhoenixHaml.Engine
+config :phoenix, :template_engines, haml: PhoenixHaml.Engine
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

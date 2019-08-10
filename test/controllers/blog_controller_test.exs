@@ -1,7 +1,7 @@
-defmodule CenatusLtd.BlogControllerTest do
-  use CenatusLtd.ConnCase
+defmodule CenatusLtdWeb.BlogControllerTest do
+  use CenatusLtdWeb.ConnCase
 
-  alias CenatusLtd.{Article, Section}
+  alias CenatusLtdWeb.{Article, Section}
 
   @valid_attrs %{
     title: "some content title",

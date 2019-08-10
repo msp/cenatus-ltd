@@ -1,7 +1,7 @@
-defmodule CenatusLtd.SectionTest do
-  use CenatusLtd.ModelCase
+defmodule CenatusLtdWeb.SectionTest do
+  use CenatusLtdWeb.ModelCase
 
-  alias CenatusLtd.Section
+  alias CenatusLtdWeb.Section
 
   @valid_attrs %{name: "Blog"}
   @invalid_attrs %{}

@@ -1,7 +1,7 @@
-defmodule CenatusLtd.UserTest do
-  use CenatusLtd.ModelCase
+defmodule CenatusLtdWeb.UserTest do
+  use CenatusLtdWeb.ModelCase
 
-  alias CenatusLtd.User
+  alias CenatusLtdWeb.User
 
   @valid_attrs %{name: "test-user", username: "test-username", password: "passw0rd"}
   @invalid_attrs %{}

@@ -1,7 +1,7 @@
-defmodule CenatusLtd.RedirectorTest do
+defmodule CenatusLtdWeb.RedirectorTest do
   use ExUnit.Case, async: true
 
-  alias CenatusLtd.Redirector
+  alias CenatusLtdWeb.Redirector
 
   defmodule Router do
     use Phoenix.Router

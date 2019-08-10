@@ -1,14 +1,14 @@
-defmodule CenatusLtd.UserControllerTest do
-  use CenatusLtd.ConnCase
+defmodule CenatusLtdWeb.UserControllerTest do
+  use CenatusLtdWeb.ConnCase
 
-  alias CenatusLtd.User
+  alias CenatusLtdWeb.User
 
   @valid_attrs %{name: "test-user", username: "test-username", password: "passw0rd"}
   @invalid_attrs %{username: "test-user"}
 
   describe "authorized routes:" do
     setup %{conn: conn} do
-      admin_user = %CenatusLtd.User{id: 1, username: "admin"}
+      admin_user = %CenatusLtdWeb.User{id: 1, username: "admin"}
       {:ok, conn: assign(conn, :current_user, admin_user), user: admin_user}
     end
 

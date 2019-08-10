@@ -10,7 +10,7 @@ defmodule CenatusLtd.Sitemaps do
     public_path: "sitemaps/",
     compress: false
 
-  alias CenatusLtd.{Endpoint, Router.Helpers}
+  alias CenatusLtdWeb.{Endpoint, Router.Helpers}
 
   def generate do
     create do

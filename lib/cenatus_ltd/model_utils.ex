@@ -1,5 +1,5 @@
 defmodule CenatusLtd.ModelUtils do
-  use CenatusLtd.Web, :model
+  use CenatusLtdWeb, :model
 
   def slugify(changeset, field) do
     if slug_field = get_change(changeset, field) do

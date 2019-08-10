@@ -1,3 +1,3 @@
-defmodule CenatusLtd.PageViewTest do
-  use CenatusLtd.ConnCase, async: true
+defmodule CenatusLtdWeb.PageViewTest do
+  use CenatusLtdWeb.ConnCase, async: true
 end

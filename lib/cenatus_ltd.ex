@@ -11,7 +11,7 @@ defmodule CenatusLtd do
       # Start the Ecto repository
       supervisor(CenatusLtd.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(CenatusLtd.Endpoint, []),
+      supervisor(CenatusLtdWeb.Endpoint, []),
       # Start your own worker by calling: CenatusLtd.Worker.start_link(arg1, arg2, arg3)
       # worker(CenatusLtd.Worker, [arg1, arg2, arg3]),
       worker(CenatusLtd.Periodically, [%{}])
@@ -19,14 +19,14 @@ defmodule CenatusLtd do
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: CenatusLtd.Supervisor]
+    opts = [strategy: :one_for_one, name: CenatusLtdWeb.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    CenatusLtd.Endpoint.config_change(changed, removed)
+    CenatusLtdWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

@@ -1,4 +1,4 @@
-defmodule CenatusLtd.ChannelCase do
+defmodule CenatusLtdWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -25,9 +25,8 @@ defmodule CenatusLtd.ChannelCase do
       import Ecto.Changeset
       import Ecto.Query
 
-
       # The default endpoint for testing
-      @endpoint CenatusLtd.Endpoint
+      @endpoint CenatusLtdWeb.Endpoint
     end
   end
 

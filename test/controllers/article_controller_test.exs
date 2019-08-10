@@ -1,7 +1,7 @@
-defmodule CenatusLtd.ArticleControllerTest do
-  use CenatusLtd.ConnCase
+defmodule CenatusLtdWeb.ArticleControllerTest do
+  use CenatusLtdWeb.ConnCase
 
-  alias CenatusLtd.Article
+  alias CenatusLtdWeb.Article
 
   @valid_attrs %{
     title: "some content",
@@ -14,7 +14,7 @@ defmodule CenatusLtd.ArticleControllerTest do
 
   describe "authorized routes" do
     setup %{conn: conn} do
-      admin_user = %CenatusLtd.User{id: 1, username: "admin"}
+      admin_user = %CenatusLtdWeb.User{id: 1, username: "admin"}
       {:ok, conn: assign(conn, :current_user, admin_user), user: admin_user}
     end
 

@@ -1,0 +1,39 @@
+= render_page_title(@conn)
+
+.row.content.blog
+  .col-12.col-md-9.blog-articles
+    - for {article, index} <- Enum.with_index(@articles) do
+      = render "blog_article_preview.html", article: article, conn: @conn
+
+  .col-12.col-md-3.order-first.order-md-last.blog-aside
+    %aside.px-md-5
+      %h4 categories
+      .categories
+        = CenatusLtdWeb.ArticleView.render_categories_as_links_from(@conn, @categories)
+
+    -# TODO: Need a separate blog tags collection or can we filter backwards to
+    -# include on Blog articles?
+    %aside.px-md-5
+      %h4 tags
+      .tags
+        = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags)
+
+.row.meta
+  .col-md-4
+    %aside.twitter.lp
+      %h4 said
+      = render "tweets.html", tweets: @tweets, conn: @conn
+  .col-md-4
+    %aside
+      %h4 meta
+      .tags
+        = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags)
+      %br
+      %br
+      .tech_tags
+        = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tech_tags)
+
+  .col-md-4
+    %aside.last-fm
+      %h4 heard
+      = render "tracks.html", tracks: @tracks, conn: @conn

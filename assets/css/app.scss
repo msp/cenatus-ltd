@@ -1,0 +1,716 @@
+/* This file is for your main application css. */
+
+$cenatus-blue: #6CA8DC;
+$cenatus-light-grey: #FAFBFC;
+$cenatus-light-blue: #BAD5ED;
+$cenatus-font-color: #4A4A4A;
+$cenatus-font-size:16px;
+$cenatus-line-height: 30px;
+
+@mixin divider {
+  border-bottom: 1px dashed $cenatus-light-blue;
+}
+
+@mixin divider-top {
+  border-top: 1px dashed $cenatus-light-blue;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: $cenatus-font-size;
+  line-height: $cenatus-line-height;
+  color: $cenatus-font-color;
+  font-weight: 100;
+}
+
+.container-fluid.cenatus {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.container, .container-fluid {
+  h1, h2, h3, h4, h5 {
+    font-weight: bold;
+    color: $cenatus-blue;
+  }
+
+  a {
+    color: $cenatus-blue;
+
+    &:hover {
+      color: #498CC8;
+    }
+  }
+}
+
+.lp {
+  padding-left: 20px;
+}
+
+.tp {
+  padding-top: 20px;
+}
+
+.nbm {
+  margin-bottom: 0px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.smaller {
+  font-size: smaller;
+}
+
+header {
+  @include divider
+
+  .row {
+    .logo, .category {
+      display: flex;
+    	align-items: center;
+      // justify-content: center;
+
+      height: 140px;
+      color: $cenatus-blue;
+      // text-align: center;
+      // border: 1px solid blue;
+    }
+
+    .logo {
+      background-color: white;
+      // border: 1px solid red;
+      svg {
+        // border: 1px solid green;
+        width: 130%;
+        margin-left: -5%;
+      }
+      img {
+        height: 110px;
+        margin-left: -30px;
+      }
+    }
+
+    .category {
+      border-left: 1px solid white;
+    }
+
+    a {
+      color: $cenatus-blue;
+      display: block;
+      font-size: 22px;
+      font-weight: 500;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// FF only SVG sizing :/
+@-moz-document url-prefix() {
+  header {
+    .row {
+      .logo {
+        svg {
+          border: 0px solid purple;
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+table.articles {
+  tr.heading {
+    background-color: #ccc;
+  }
+
+  tr.body {
+    margin-bottom: 100px;
+  }
+
+  .image {
+    width: 30%;
+  }
+}
+
+main, header, footer {
+  // TODO! Fix Brunch / JS builder first
+  // visibility: hidden;
+}
+
+article.preview, article.show, main {
+  h1, h2, h3, h4, .tag_page_title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img{
+    width: 100%;
+    // border: 1px dashed #ccc;
+  }
+
+  .summary, .content {
+    padding-bottom: 20px;
+    padding-right: 50px;
+  }
+}
+
+.blog-articles {
+  article.preview {
+    @include divider;
+  }
+}
+
+.blog-articles > div.row {
+  &:last-child {
+    margin-bottom: 0px !important;
+
+    article {
+      border-bottom: none;
+    }
+  }
+}
+
+
+.published {
+  font-size: smaller;
+  margin-top: 40px;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+
+.meta {
+  @include divider-top;
+  font-size: $cenatus-font-size - 2;
+  line-height: $cenatus-line-height - 5;
+
+  .twitter {
+    .tweet {
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .glyphicon {
+        font-size: smaller;
+        color: #ccc;
+      }
+      a {
+        max-width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+    }
+  }
+  .last-fm {
+    .track {
+      .glyphicon {
+        font-size: smaller;
+        color: #ccc;
+      }
+      a {
+        max-width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  aside {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 0px;
+
+    ul {
+      list-style-type: square;
+      margin-left: 0px;
+      padding-left: 16px;
+    }
+  }
+}
+
+.tags, .tech_tags, .categories {
+  font-size: $cenatus-font-size - 2;
+  line-height: $cenatus-line-height - 5;
+
+  li {
+    display: inline-block;
+  }
+
+  .tag, .category {
+    &:before {
+      content: ", "
+    }
+
+    &:first-of-type{
+      &:before {
+        content: ""
+      }
+    }
+    a {
+      color: $cenatus-font-color;
+      &:hover {
+        color: $cenatus-font-color;
+      }
+    }
+  }
+}
+
+// .tags .tag:first-of-type:before, .tech_tags .tag:first-of-type:before {
+//   content: ""
+// }
+
+
+.overlay {
+  top: 0px;
+  left: 0px;
+
+  position: absolute;
+  display: none;
+  // display: flex;
+  height: 100%;
+  width : 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  opacity: 0.7;
+
+  a {
+    font-size: xx-large;
+    color: white;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+  }
+}
+
+.hotspot {
+  &:hover {
+    // border: 1px solid red;
+    // background-color: black;
+    // opacity: 0.2;
+  }
+}
+
+$related_padding: 20%;
+
+.related {
+  padding-top: 0px;
+  border: 0px solid red;
+
+  h2, h3, h4 {
+    padding-left: $related_padding - 8%;
+  }
+  ul {
+    list-style-type: square;
+    padding-left: $related_padding;
+  }
+}
+
+.debug {
+  border: 1px solid red;
+  color: blue;
+}
+
+textarea#article_content.form-control, textarea#article_summary.form-control {
+  height: 300px;
+}
+
+footer {
+  .row {
+    @include divider-top;
+    padding-bottom: 20px;
+
+    .address, .links {
+      display: flex;
+    	align-items: center;
+      height: 120px;
+      color: $cenatus-blue;
+      padding-left: 32px;
+    }
+
+    .links {
+      padding-top: 10px;
+    }
+
+    .address {
+      padding-top: 48px;
+    }
+
+    a {
+      color: $cenatus-blue;
+      display: block;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    ul {
+      padding-left: 0px;
+      margin-top: 20px;
+    }
+
+    li {
+      list-style: none;
+      float: left;
+      padding-right: 10px;
+    }
+  }
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  header {
+    .row {
+      padding-top: 30px;
+      .logo {
+        height: 40px;
+        svg {
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+      .category {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+        height: 80px;
+        // border: 1px solid red;
+
+        a {
+            font-size: 17px;
+            // border: 1px solid blue;
+            margin-left: 0px;
+
+        }
+      }
+      .category:first-of-type {
+        border: 0px;
+      }
+    }
+  }
+  .meta aside {
+    padding-left: 20px;
+  }
+
+  .related {
+    display: none;
+  }
+
+  footer {
+    .row {
+      .links {
+        margin-left: 10px;
+        margin-top: 40px;
+        height: 40px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 6 ----------- */
+/* iPhone 6 Portrait */
+@media screen and (min-width : 375px) and (max-width : 667px) {
+  header {
+    .row {
+      padding-top: 30px;
+      .logo {
+        height: 100px;
+        svg {
+          width: 110%;
+          margin: 0 auto;
+        }
+      }
+      .category {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+        height: 80px;
+        // border: 1px solid red;
+
+        a {
+            font-size: 17px;
+            // border: 1px solid blue;
+            margin-left: 0px;
+
+        }
+      }
+      .category:first-of-type {
+        border: 0px;
+      }
+    }
+  }
+
+  article.preview, article.show, main {
+    .summary, .content {
+      padding-bottom: 30px;
+      padding-right: 0px;
+    }
+  }
+
+  .meta aside {
+    padding-left: 20px;
+  }
+
+  .related {
+    display: none;
+  }
+
+  footer {
+    .row {
+      .links {
+        margin-left: 10px;
+        margin-top: 40px;
+        height: 40px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+/* iPhone 6 Landscape */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
+  header {
+    .row {
+      .logo {
+        svg {
+          width: 80%;
+          margin: 0 auto;
+        }
+
+      }
+      .category:first-of-type {
+        border: 0px;
+      }
+    }
+  }
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  header {
+    .row {
+      .logo {
+        height: 140px;
+      }
+      .category {
+        // border: 1px solid red;
+        a {
+        }
+
+      }
+      .category:first-of-type {
+        border: 0px;
+      }
+    }
+  }
+
+  article.preview, article.show, main {
+    .summary, .content {
+      padding-bottom: 50px;
+      padding-right: 0px;
+    }
+  }
+
+  .meta aside {
+    padding-left: 20px;
+  }
+
+  .related {
+    display: none;
+  }
+
+  footer {
+    .row {
+      .links {
+        margin-left: 10px;
+        margin-top: 40px;
+        height: 40px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+/* ----------- iPad mini / 1 & 2 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+  header {
+    .row {
+      padding-top: 30px;
+      .logo {
+        border: 0px solid red;
+        height: 140px;
+        margin-bottom: 40px;
+        svg {
+          width: 110%
+        }
+      }
+      .category {
+        padding-bottom: 20px;
+        height: 40px;
+        // border: 1px solid red;
+        a {
+        }
+
+      }
+      .category:first-of-type {
+        border: 0px;
+      }
+    }
+  }
+
+  article.preview, article.show, main {
+    .summary, .content {
+      padding-bottom: 40px;
+      padding-right: 0px;
+    }
+  }
+
+  .meta aside {
+    padding-left: 20px;
+  }
+
+  .related {
+    display: none;
+  }
+
+  footer {
+    .row {
+      .links {
+        margin-left: 10px;
+        margin-top: 40px;
+        height: 40px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+  header {
+    .row {
+      .logo {
+        border: 0px solid red;
+        svg {
+          // border: 1px solid green;
+          width: 100%;
+        }
+      }
+      .category {
+        border: 0px solid green;
+        padding-top: 75px;
+        a {
+        }
+      }
+    }
+  }
+}
+
+
+
+/* Effect 1: Brackets */
+.cl-effect-1 a::before,
+.cl-effect-1 a::after {
+	// display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+.cl-effect-1 a::before {
+	margin-right: 10px;
+	content: '[';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+
+.cl-effect-1 a::after {
+	margin-left: 10px;
+	content: ']';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+.cl-effect-1 a:hover::before,
+.cl-effect-1 a:hover::after,
+.cl-effect-1 a:focus::before,
+.cl-effect-1 a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}
+
+/* END Effect 1: Brackets */

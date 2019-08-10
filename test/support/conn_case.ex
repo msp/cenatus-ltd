@@ -1,4 +1,4 @@
-defmodule CenatusLtd.ConnCase do
+defmodule CenatusLtdWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,11 +25,11 @@ defmodule CenatusLtd.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import CenatusLtd.Router.Helpers
-      import CenatusLtd.TestHelpers
+      import CenatusLtdWeb.Router.Helpers
+      import CenatusLtdWeb.TestHelpers
 
       # The default endpoint for testing
-      @endpoint CenatusLtd.Endpoint
+      @endpoint CenatusLtdWeb.Endpoint
     end
   end
 

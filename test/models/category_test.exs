@@ -1,7 +1,7 @@
-defmodule CenatusLtd.CategoryTest do
-  use CenatusLtd.ModelCase
+defmodule CenatusLtdWeb.CategoryTest do
+  use CenatusLtdWeb.ModelCase
 
-  alias CenatusLtd.Category
+  alias CenatusLtdWeb.Category
 
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}

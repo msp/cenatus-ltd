@@ -1,6 +1,6 @@
-defmodule CenatusLtd.TestHelpers do
+defmodule CenatusLtdWeb.TestHelpers do
   alias CenatusLtd.Repo
-  alias CenatusLtd.Article
+  alias CenatusLtdWeb.Article
 
   def insert_article(attrs \\ %{}) do
       changes = Map.merge(%{

@@ -6,23 +6,28 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :cenatus_ltd, CenatusLtd.Endpoint,
+config :cenatus_ltd, CenatusLtdWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../", __DIR__)]]
-
+  watchers: [
+    node: [
+      "node_modules/brunch/bin/brunch",
+      "watch",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # Watch static and templates for browser reloading.
-config :cenatus_ltd, CenatusLtd.Endpoint,
+config :cenatus_ltd, CenatusLtdWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex|haml)$}
+      ~r{lib/cenatus_ltd_web/views/.*(ex)$},
+      ~r{lib/cenatus_ltd_web/templates/.*(eex|haml)$}
     ]
   ]
 
@@ -45,7 +50,8 @@ config :ex_aws,
   access_key_id: [{:system, "AWS_ACCESS_KEY_ID"}, :instance_role],
   secret_access_key: [{:system, "AWS_SECRET_ACCESS_KEY"}, :instance_role],
   region: "fakes3"
-  # debug_requests: true
+
+# debug_requests: true
 
 config :ex_aws, :s3,
   scheme: "http://",

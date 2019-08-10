@@ -1,13 +1,13 @@
-defmodule CenatusLtd.CategoryControllerTest do
-  use CenatusLtd.ConnCase
+defmodule CenatusLtdWeb.CategoryControllerTest do
+  use CenatusLtdWeb.ConnCase
 
-  alias CenatusLtd.Category
+  alias CenatusLtdWeb.Category
   @valid_attrs %{name: "XR"}
   @invalid_attrs %{}
 
   describe "authorized routes" do
     setup %{conn: conn} do
-      admin_user = %CenatusLtd.User{id: 1, username: "admin"}
+      admin_user = %CenatusLtdWeb.User{id: 1, username: "admin"}
       {:ok, conn: assign(conn, :current_user, admin_user), user: admin_user}
     end
 

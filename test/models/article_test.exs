@@ -1,7 +1,7 @@
-defmodule CenatusLtd.ArticleTest do
-  use CenatusLtd.ModelCase
+defmodule CenatusLtdWeb.ArticleTest do
+  use CenatusLtdWeb.ModelCase
 
-  alias CenatusLtd.Article
+  alias CenatusLtdWeb.Article
 
   @valid_attrs %{
     content: "some content",
