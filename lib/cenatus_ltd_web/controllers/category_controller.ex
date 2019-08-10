@@ -35,11 +35,14 @@ defmodule CenatusLtdWeb.CategoryController do
       Repo.get!(Category, id)
       |> Repo.preload(:articles)
 
-    # render(conn, "show.html", category: category)
-    render(conn, CenatusLtdWeb.SharedView, "articles.html",
+    page_assigns = %{
       articles: category.articles,
       page_title: "'#{category.name}' articles"
-    )
+    }
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", page_assigns)
   end
 
   def edit(conn, %{"id" => id}) do

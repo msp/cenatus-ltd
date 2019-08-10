@@ -2,7 +2,7 @@
 
 .row.content.blog
   .col-12.col-md-9.blog-articles
-    - for {article, index} <- Enum.with_index(@articles) do
+    - for {article, _index} <- Enum.with_index(@articles) do
       = render "blog_article_preview.html", article: article, conn: @conn
 
   .col-12.col-md-3.order-first.order-md-last.blog-aside

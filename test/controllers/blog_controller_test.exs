@@ -20,7 +20,6 @@ defmodule CenatusLtdWeb.BlogControllerTest do
       std_offset: 0
     }
   }
-  @invalid_attrs %{}
 
   # test "lists all entries on index", %{conn: conn} do
   #   conn = get(conn, blog_path(conn, :index))
@@ -45,20 +44,19 @@ defmodule CenatusLtdWeb.BlogControllerTest do
 
     blog_article = Repo.insert!(changeset)
 
-    changeset =
-      Article.changeset(
-        %Article{},
-        Map.merge(@valid_attrs, %{title: "another blog article", section_id: blog.id})
-      )
-
-    related_blog_article = Repo.insert!(changeset)
-    # related_blog_article = Repo.preload(related_article, :tags)
-    related_blog_article = Repo.get(Article, related_blog_article.id)
+    # changeset =
+    #   Article.changeset(
+    #     %Article{},
+    #     Map.merge(@valid_attrs, %{title: "another blog article", section_id: blog.id})
+    #   )
+    #
+    # related_blog_article = Repo.insert!(changeset)
+    # related_blog_article = Repo.get(Article, related_blog_article.id)
 
     conn = get(conn, article_path(conn, :show, blog_article))
 
     assert conn.assigns.article == blog_article
-    # TODO!
+    # TODO! What will we show as related content? It's not by section, prob by Category or Tag
     # assert conn.assigns.related == [related_blog_article]
     assert html_response(conn, 200) =~ blog_article.title
   end

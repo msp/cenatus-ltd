@@ -17,32 +17,49 @@ defmodule CenatusLtdWeb.PageController do
         )
       )
 
-    render(conn, CenatusLtdWeb.SharedView, "articles.html", articles: articles)
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", articles: articles)
   end
 
   def creative(conn, _params) do
     articles = get_articles_tagged_by("creative")
-    render(conn, CenatusLtdWeb.SharedView, "articles.html", articles: articles)
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", articles: articles)
   end
 
   def technology(conn, _params) do
     articles = get_articles_tagged_by("technology")
-    render(conn, CenatusLtdWeb.SharedView, "articles.html", articles: articles)
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", articles: articles)
   end
 
   def production(conn, _params) do
     articles = get_articles_tagged_by("production")
-    render(conn, CenatusLtdWeb.SharedView, "articles.html", articles: articles)
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", articles: articles)
   end
 
   def people(conn, _params) do
     articles = get_articles_tagged_by("person")
-    render(conn, CenatusLtdWeb.SharedView, "articles.html", articles: articles)
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", articles: articles)
   end
 
   def about(conn, _params) do
     articles = get_articles_tagged_by("about")
-    render(conn, CenatusLtdWeb.SharedView, "articles.html", articles: articles)
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", articles: articles)
   end
 
   def admin(conn, _params) do

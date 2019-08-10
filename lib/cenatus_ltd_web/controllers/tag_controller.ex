@@ -40,10 +40,14 @@ defmodule CenatusLtdWeb.TagController do
       |> Repo.preload(:articles)
       |> Repo.preload(:tech_articles)
 
-    render(conn, CenatusLtdWeb.SharedView, "articles.html",
+    page_assigns = %{
       articles: tag.articles ++ tag.tech_articles,
       page_title: "'#{tag.name}' articles"
-    )
+    }
+
+    conn
+    |> put_view(CenatusLtdWeb.SharedView)
+    |> render("articles.html", page_assigns)
   end
 
   def edit(conn, %{"id" => id}) do
