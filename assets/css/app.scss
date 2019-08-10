@@ -1,4 +1,4 @@
-/* This file is for your main application css. */
+/* This file is for your main application (s)css. */
 
 $cenatus-blue: #6CA8DC;
 $cenatus-light-grey: #FAFBFC;
@@ -62,6 +62,9 @@ body {
 .smaller {
   font-size: smaller;
 }
+
+/* Phoenix flash messages */
+.alert:empty { display: none; }
 
 header {
   @include divider
@@ -137,8 +140,7 @@ table.articles {
 }
 
 main, header, footer {
-  // TODO! Fix Brunch / JS builder first
-  // visibility: hidden;
+  visibility: hidden;
 }
 
 article.preview, article.show, main {
@@ -279,11 +281,6 @@ article.preview, article.show, main {
     }
   }
 }
-
-// .tags .tag:first-of-type:before, .tech_tags .tag:first-of-type:before {
-//   content: ""
-// }
-
 
 .overlay {
   top: 0px;

@@ -1,5 +1,11 @@
 $(document).ready(function() {
-  $.cloudinary.responsive()
+  console.log("--------------- onload ---------------");
+
+  const twitter = require('twitter-text')
+  const cloudinary = require('cloudinary-core');
+
+  var cl = cloudinary.Cloudinary.new({cloud_name: "cenatus"});
+  cl.responsive();
 
   const home = (window.location.pathname === "/");
   // $('.hotspot').hover(
@@ -65,6 +71,12 @@ $(document).ready(function() {
   const tweets = $('.tweet .text');
 
   $.each(tweets, function( index, tweet ) {
-    $(tweet).html(twitter.autoLink(twitter.htmlEscape($(tweet).text())));
+    $(tweet).html(
+      twitter.autoLink(
+        twitter.htmlEscape($(tweet).text())
+      )
+    );
   });
+
+  console.log("------------- DONE onload -------------");
 });
