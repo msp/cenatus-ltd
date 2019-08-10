@@ -10,7 +10,7 @@ defmodule CenatusLtdWeb.Article do
     field(:summary, :string)
     field(:content, :string)
     field(:image_url, :string)
-    field(:published_at, Ecto.DateTime)
+    field(:published_at, :utc_datetime)
     field(:slug, :string)
 
     belongs_to(:section, CenatusLtdWeb.Section)

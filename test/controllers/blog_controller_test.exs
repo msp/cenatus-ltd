@@ -7,7 +7,18 @@ defmodule CenatusLtdWeb.BlogControllerTest do
     title: "some content title",
     summary: "some content summary",
     content: "some content",
-    published_at: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}
+    published_at: %DateTime{
+      day: 17,
+      month: 4,
+      year: 2010,
+      hour: 14,
+      minute: 0,
+      second: 0,
+      time_zone: "Europe/London",
+      zone_abbr: "GMT",
+      utc_offset: 3600,
+      std_offset: 0
+    }
   }
   @invalid_attrs %{}
 
