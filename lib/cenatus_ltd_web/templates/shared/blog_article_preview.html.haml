@@ -12,6 +12,6 @@
           .summary.ml-md-4
             = @article.summary |> as_html
             %a{href: '#{Routes.blog_path(@conn, :show, @article)}'} more >
-            %p.published.my-0.pr-3.text-right
+            %p.published.my-0.pr-3.text-right.smaller
               Published on
               = @article.published_at |> formatted
