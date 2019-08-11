@@ -9,7 +9,7 @@
           %h4.lp
             %a.link{href: '#{Routes.blog_path(@conn, :show, @article)}'}
               = @article.title
-          .summary.lp.col
+          .summary.ml-md-4
             = @article.summary |> as_html
             %a{href: '#{Routes.blog_path(@conn, :show, @article)}'} more >
             %p.published.my-0.pr-3.text-right
