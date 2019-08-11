@@ -40,7 +40,7 @@
         .row.justify-content-between
           .col-xs-12.col-md-4.address
             = render CenatusLtdWeb.SharedView, "address.html"
-          .col-xs-12.col-md-3.links
+          .col-xs-12.col-md-4.links
             %ul
               %li
                 %a{href: "/about"} about
@@ -49,7 +49,10 @@
                 %a{href: '#{Routes.blog_path(@conn, :index)}'} blog
               %li |
               %li
-                %a{href: "/rss"} rss
+                %a{href: "https://www.specificfeeds.com/cenatus"} rss
+              %li |
+              %li
+                %a{href: "https://www.specificfeeds.com/cenatus?subParam=followPub"} subs
               %li |
               %li
                 %a{href: "/contact"} contact
@@ -57,13 +60,14 @@
               -# %li
               -#   %a{href: "https://madmimi.com/signups/subscribe/27129", target: "_blank"} subscribe
         .row
-          - if @current_user do
-            %ul
-              %li
-                = link "admin", to: Routes.page_path(@conn, :admin)
-              %li |
-              %li
-                = link "log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete"
+          .col
+            - if @current_user do
+              %ul
+                %li
+                  = link "admin", to: Routes.page_path(@conn, :admin)
+                %li |
+                %li
+                  = link "log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete"
 
     %script(src='https://code.jquery.com/jquery-2.2.4.js')
     %script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js')
