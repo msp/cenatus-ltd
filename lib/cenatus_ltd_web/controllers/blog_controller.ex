@@ -21,6 +21,7 @@ defmodule CenatusLtdWeb.BlogController do
     main_article =
       Repo.get!(Article, id)
       |> Repo.preload(:section)
+      |> Repo.preload(:category)
       |> Repo.preload(:tags)
       |> Repo.preload(:tech_tags)
 

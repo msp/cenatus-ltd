@@ -29,6 +29,10 @@
       %p.lp.nbm.tags
         Section:
         = @article.section.name
+      - if @article.category do
+        %p.lp.nbm.tags
+          Category:
+          = @article.category.name
       - if length(@article.tags) > 0 do
         %p.lp.nbm.tags
           Filed as:
