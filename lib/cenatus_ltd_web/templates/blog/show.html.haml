@@ -41,3 +41,11 @@
         = @article.published_at |> formatted
 
     %br
+
+    #disqus_thread.mt-3.mb-5
+
+    :javascript
+      var disqus_config = function () {
+        this.page.url = "#{Routes.article_url(@conn, :edit, @article)}";
+        this.page.identifier = "blog-article-#{@article.id}";
+      };
