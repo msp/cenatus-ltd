@@ -176,8 +176,16 @@ article.preview, article.show, main {
 
   img{
     width: 100%;
-    // border: 1px dashed #ccc;
   }
+
+  img.partner-logo {
+    width: 70%;
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      width: 30%;
+    }
+  }
+
 
   .summary, .content {
     padding-bottom: 20px;
