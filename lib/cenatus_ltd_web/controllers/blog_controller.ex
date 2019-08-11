@@ -25,13 +25,14 @@ defmodule CenatusLtdWeb.BlogController do
       |> Repo.preload(:tags)
       |> Repo.preload(:tech_tags)
 
-    section_query =
+    category_query =
       from(article in Article,
+        where: article.category_id == ^main_article.category_id,
         where: article.section_id == ^main_article.section_id,
         distinct: article.title
       )
 
-    candidates = Repo.all(section_query)
+    candidates = Repo.all(category_query)
 
     related_articles =
       if candidates do
