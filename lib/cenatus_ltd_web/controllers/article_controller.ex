@@ -60,8 +60,15 @@ defmodule CenatusLtdWeb.ArticleController do
   def show(conn, %{"id" => id}) do
     main_article =
       Repo.get!(Article, id)
+      |> Repo.preload(:section)
+      |> Repo.preload(:category)
       |> Repo.preload(:tags)
       |> Repo.preload(:tech_tags)
+
+    if main_article.section.name == "Blog" do
+      conn
+      |> redirect(to: Routes.blog_path(conn, :show, id))
+    end
 
     tag_ids = Enum.map(main_article.tags, fn t -> t.id end)
     tech_tag_ids = Enum.map(main_article.tech_tags, fn t -> t.id end)
