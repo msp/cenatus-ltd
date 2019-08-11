@@ -1,0 +1,54 @@
+%article.show
+  %h3.lp
+    = @article.title
+    - if @current_user do
+      %a.smaller{href= '#{Routes.article_path(@conn, :edit, @article)}'}
+        [edit]
+
+  .content.lp= @article.content |> as_html
+
+    - if @article.section.name == "Blog" do
+      %p /msp
+
+  %p.lp.nbm.tags
+    Section:
+    = @article.section.name
+  - if @article.category do
+    %p.lp.nbm.tags
+      Category:
+      = @article.category.name
+  - if length(@article.tags) > 0 do
+    %p.lp.nbm.tags
+      Filed as:
+      = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @article.tags)
+  %p.ml-md-3.mt-2.published.smaller
+    Published on
+    = @article.published_at |> formatted
+
+- if Enum.any?(@article.tags, fn a -> a.name == "dycp" end) do
+  %p.lp.mt-md-4.smaller
+    This project is gratefully supported by the Arts Council England as part of their
+    %a{href: "https://www.artscouncil.org.uk/DYCP"} DYCP
+    fund
+
+  %a{href: "https://www.artscouncil.org.uk/DYCP", target: "BLANK"}
+    %img.lp.my-md-2.partner-logo{alt: "ACE DYCP", src: "https://www.artscouncil.org.uk/sites/default/files/download-file/grant_jpeg_black.jpg"}
+
+-# // EXPERIMENT
+-# .row
+-#   .col-md-12
+-#     %article.show
+-#       .pull-right.image
+-#         %image{data-src='#{@article.image_url}' class='cld-responsive'}
+-#
+-#       %h3.lp= @article.title
+-#       %h4.lp= @article.published_at |> formatted
+-#       .content.lp= @article.content |> as_html
+-#       - if length(@article.tags) > 0 do
+-#         %p.lp.nbm
+-#           Filed as:
+-#           = render_tags_as_links_from(@conn, @article.tags)
+-#       - if length(@article.tech_tags) > 0 do
+-#         %p.lp
+-#           Built using:
+-#           = render_tags_as_links_from(@conn, @article.tech_tags)

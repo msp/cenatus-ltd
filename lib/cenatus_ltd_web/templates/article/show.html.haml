@@ -13,44 +13,4 @@
 
 .row
   .col-md-12
-    %article.show
-      %h3.lp
-        = @article.title
-        - if @current_user do
-          %a.smaller{href= '#{Routes.article_path(@conn, :edit, @article)}'}
-            [edit]
-
-      .content.lp= @article.content |> as_html
-      - if length(@article.tags) > 0 do
-        %p.lp.nbm.tags
-          Filed as:
-          = render_tags_as_links_from(@conn, @article.tags)
-      - if length(@article.tech_tags) > 0 do
-        %p.lp.tech_tags
-          Project tech:
-          = render_tags_as_links_from(@conn, @article.tech_tags)
-      %p.lp.published
-        Published on
-        = @article.published_at |> formatted
-
-    %br
-
-
--# // EXPERIMENT
--# .row
--#   .col-md-12
--#     %article.show
--#       .pull-right.image
--#         %image{data-src='#{@article.image_url}' class='cld-responsive'}
--#
--#       %h3.lp= @article.title
--#       %h4.lp= @article.published_at |> formatted
--#       .content.lp= @article.content |> as_html
--#       - if length(@article.tags) > 0 do
--#         %p.lp.nbm
--#           Filed as:
--#           = render_tags_as_links_from(@conn, @article.tags)
--#       - if length(@article.tech_tags) > 0 do
--#         %p.lp
--#           Built using:
--#           = render_tags_as_links_from(@conn, @article.tech_tags)
+    = render CenatusLtdWeb.SharedView, "article.html", article: @article, current_user: @current_user, conn: @conn
