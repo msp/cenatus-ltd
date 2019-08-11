@@ -9,22 +9,4 @@
   - if rem(index, 2) != 0 || (length(@articles) -1) == index do
     </div>
 
-.row.meta
-  .col-md-4
-    %aside.twitter.lp
-      %h4 said
-      = render "tweets.html", tweets: @tweets, conn: @conn
-  .col-md-4
-    %aside
-      %h4 meta
-      .tags
-        = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags)
-      %br
-      %br
-      .tech_tags
-        = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tech_tags)
-
-  .col-md-4
-    %aside.last-fm
-      %h4 heard
-      = render "tracks.html", tracks: @tracks, conn: @conn
+= render "meta.html", conn: @conn, tweets: @tweets, tags: @tags, tech_tags: @tech_tags, tracks: @tracks
