@@ -1,7 +1,7 @@
 defmodule CenatusLtdWeb.ArticleControllerTest do
   use CenatusLtdWeb.ConnCase
 
-  alias CenatusLtdWeb.Article
+  alias CenatusLtdWeb.{Article, Category, Section}
 
   @valid_attrs %{
     title: "some content",
@@ -84,27 +84,40 @@ defmodule CenatusLtdWeb.ArticleControllerTest do
 
   describe "public routes" do
     test "shows chosen resource", %{conn: conn} do
-      changeset =
+      section = Repo.get_by(Section, name: "Blog")
+
+      category =
+        Category.changeset(%Category{name: "web dev"})
+        |> Repo.insert!()
+
+      main_article =
         Article.changeset(
           %Article{},
-          Map.merge(@valid_attrs, %{title: "main creative article", tags: "creative"})
+          Map.merge(@valid_attrs, %{
+            title: "main creative article",
+            tags: "creative",
+            section_id: section.id,
+            category_id: category.id
+          })
         )
+        |> Repo.insert!()
 
-      main_article = Repo.insert!(changeset)
-
-      changeset =
+      related_article =
         Article.changeset(
           %Article{},
-          Map.merge(@valid_attrs, %{title: "related creative article", tags: "creative"})
+          Map.merge(
+            @valid_attrs,
+            %{title: "related creative article", tags: "creative"}
+          )
         )
+        |> Repo.insert!()
 
-      related_article = Repo.insert!(changeset)
       related_article = Repo.preload(related_article, :tags)
       related_article = Repo.get(Article, related_article.id)
 
       conn = get(conn, article_path(conn, :show, main_article))
 
-      assert conn.assigns.article == main_article
+      assert conn.assigns.article.id == main_article.id
       assert conn.assigns.related == [related_article]
       assert html_response(conn, 200) =~ main_article.title
     end

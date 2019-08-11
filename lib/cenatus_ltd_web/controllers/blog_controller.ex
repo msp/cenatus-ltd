@@ -9,18 +9,15 @@ defmodule CenatusLtdWeb.BlogController do
   plug(:load_periodic)
 
   def index(conn, _params) do
-    blog_query =
+    articles =
       from(article in Article,
         join: s in assoc(article, :section),
         where: s.name == "Blog",
         order_by: [desc: article.published_at]
       )
+      |> Repo.all()
 
-    articles = Repo.all(blog_query)
-
-    # TODO: MOve this back to index.html.haml page
-    render(conn, CenatusLtdWeb.SharedView, "blog.html", articles: articles)
-    # render(conn, "index.html", articles: blog.articles)
+    render(conn, "index.html", articles: articles)
   end
 
   def show(conn, %{"id" => id}) do
