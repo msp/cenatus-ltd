@@ -7,6 +7,15 @@ $cenatus-font-color: #4A4A4A;
 $cenatus-font-size:16px;
 $cenatus-line-height: 30px;
 
+// These are Bootstrap defaults
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
 @mixin divider {
   border-bottom: 1px dashed $cenatus-light-blue;
 }
@@ -43,12 +52,24 @@ body {
   }
 }
 
+// m-0 0
+// m-1 to .25rem (4px if font-size is 16px)
+// m-2 to .5rem (8px if font-size is 16px)
+// m-3 to 1rem (16px if font-size is 16px)
+// m-4 to 1.5rem (24px if font-size is 16px)
+// m-5 to 3rem (48px if font-size is 16px)
+// auto - sets margin to auto
+
+// phase these out for the bootstrap responsive defaults
+// but bring them into partiy
 .lp {
-  padding-left: 20px;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding-left: 1rem;
+  }
 }
 
 .tp {
-  padding-top: 20px;
+  padding-top: 1rem;
 }
 
 .nbm {
@@ -167,6 +188,14 @@ article.preview, article.show, main {
 .blog-articles {
   article.preview {
     @include divider;
+  }
+
+  .summary {
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // max-height: 100px; /* exactly three lines */
+    // text-overflow: -o-ellipsis-lastline;
   }
 }
 
@@ -349,7 +378,6 @@ footer {
     	align-items: center;
       height: 120px;
       color: $cenatus-blue;
-      padding-left: 32px;
     }
 
     .links {
@@ -419,9 +447,6 @@ footer {
       }
     }
   }
-  .meta aside {
-    padding-left: 20px;
-  }
 
   .related {
     display: none;
@@ -430,7 +455,6 @@ footer {
   footer {
     .row {
       .links {
-        margin-left: 10px;
         margin-top: 40px;
         height: 40px;
         padding-bottom: 20px;
@@ -497,10 +521,6 @@ footer {
     }
   }
 
-  .meta aside {
-    padding-left: 20px;
-  }
-
   .related {
     display: none;
   }
@@ -508,7 +528,6 @@ footer {
   footer {
     .row {
       .links {
-        margin-left: 10px;
         margin-top: 40px;
         height: 40px;
         padding-bottom: 20px;
