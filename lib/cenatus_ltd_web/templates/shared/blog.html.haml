@@ -11,12 +11,15 @@
       .categories
         = CenatusLtdWeb.ArticleView.render_categories_as_links_from(@conn, @categories)
 
-    -# TODO: Need a separate blog tags collection or can we filter backwards to
-    -# include on Blog articles?
     %aside.px-md-5
       %h4 tags
       .tags
         = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags)
+
+    %aside.px-md-5
+      %h4 tech
+      .tags
+        = CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tech_tags)
 
 
 = render "meta.html", conn: @conn, tweets: @tweets, tags: @tags, tech_tags: @tech_tags, tracks: @tracks

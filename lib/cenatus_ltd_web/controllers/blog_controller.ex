@@ -3,17 +3,23 @@ defmodule CenatusLtdWeb.BlogController do
 
   alias CenatusLtdWeb.{Article, Section}
 
-  plug(CenatusLtdWeb.LoadAllTags)
+  plug(CenatusLtdWeb.LoadAllBlogTags)
   plug(CenatusLtdWeb.LoadAllSections)
   plug(CenatusLtdWeb.LoadAllCategories)
   plug(:load_periodic)
 
   def index(conn, _params) do
-    blog =
-      Repo.get_by(Section, name: "Blog")
-      |> Repo.preload(:articles)
+    blog_query =
+      from(article in Article,
+        join: s in assoc(article, :section),
+        where: s.name == "Blog",
+        order_by: [desc: article.published_at]
+      )
 
-    render(conn, CenatusLtdWeb.SharedView, "blog.html", articles: blog.articles)
+    articles = Repo.all(blog_query)
+
+    # TODO: MOve this back to index.html.haml page
+    render(conn, CenatusLtdWeb.SharedView, "blog.html", articles: articles)
     # render(conn, "index.html", articles: blog.articles)
   end
 
