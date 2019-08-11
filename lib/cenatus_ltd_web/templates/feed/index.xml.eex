@@ -10,11 +10,11 @@
     <%= for post <- @items do %>
       <item>
         <title>
-          <![CDATA[<%= post.section.name %> - #<%= post.title %>]]>
+          <![CDATA[<%= post.section.name %> - <%= post.title %>]]>
         </title>
         <link><%= Routes.article_url(@conn, :show, post) %></link>
         <description>
-          <!-- <![CDATA[<%= post.content |> CenatusLtd.Markdown.to_html() %>]]> -->
+          <![CDATA[<%= post.content |> CenatusLtd.Markdown.to_html() %>]]>
         </description>
         <dc:creator>msp</dc:creator>
         <pubDate><%= CenatusLtdWeb.SharedView.rss_date(post) %></pubDate>
