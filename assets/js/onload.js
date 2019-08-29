@@ -7,12 +7,14 @@ $(document).ready(function() {
   var cl = cloudinary.Cloudinary.new({cloud_name: "cenatus"});
   cl.responsive();
 
-  (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://cenatus.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+  if ($('#disqus_thread').length) {
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cenatus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
 
 
   const home = (window.location.pathname === "/");
