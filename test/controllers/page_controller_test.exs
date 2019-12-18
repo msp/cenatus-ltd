@@ -2,8 +2,8 @@ defmodule CenatusLtdWeb.PageControllerTest do
   use CenatusLtdWeb.ConnCase
 
   test "GET /", %{conn: conn} do
-    creative_article = insert_article(%{"title" => "creative article"})
-    technology_article = insert_article(%{"title" => "technology article"})
+    creative_article = insert_article(%{"title" => "creative article", "tags" => "featured"})
+    technology_article = insert_article(%{"title" => "technology article", "tags" => "featured"})
     production_article = insert_article(%{"title" => "production article"})
 
     conn = get conn, "/"

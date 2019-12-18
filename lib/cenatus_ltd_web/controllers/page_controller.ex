@@ -9,13 +9,17 @@ defmodule CenatusLtdWeb.PageController do
   plug(:load_periodic)
 
   def home(conn, _params) do
-    articles =
-      Repo.all(
-        from(article in Article,
-          limit: 2,
-          order_by: [desc: article.published_at]
+    articles = get_articles_tagged_by("featured")
+
+    if length(articles) == 0 do
+      articles =
+        Repo.all(
+          from(article in Article,
+            limit: 2,
+            order_by: [desc: article.published_at]
+          )
         )
-      )
+    end
 
     conn
     |> put_view(CenatusLtdWeb.SharedView)

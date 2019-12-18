@@ -28,7 +28,7 @@ Visit [`localhost:4000`](http://localhost:4000) in your browser.
 $ mix test.watch
 
 # start the server
-$ iex -S mix phoenix.server
+$ iex -S mix phx.server
 
 ```
 
