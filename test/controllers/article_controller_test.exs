@@ -84,7 +84,9 @@ defmodule CenatusLtdWeb.ArticleControllerTest do
 
   describe "public routes" do
     test "shows chosen resource", %{conn: conn} do
-      section = Repo.get_by(Section, name: "Blog")
+      section =
+        Category.changeset(%Section{}, %{name: "Blog"})
+        |> Repo.insert!()
 
       category =
         Category.changeset(%Category{name: "web dev"})

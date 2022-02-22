@@ -57,7 +57,9 @@ defmodule CenatusLtdWeb.BlogControllerTest do
   end
 
   defp create_data(_context) do
-    section = Repo.get_by(Section, name: "Blog")
+    section =
+      Category.changeset(%Section{}, %{name: "Blog"})
+      |> Repo.insert!()
 
     category =
       Category.changeset(%Category{name: "XR research"})

@@ -14,7 +14,7 @@ config :cenatus_ltd, CenatusLtdWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "jiBBNx/vDs11KHYmGbS6RGTAaINvSZBRyRGQTHwJWYCrJks+4AtTOCt+vkz5xAfR",
   render_errors: [view: CenatusLtdWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: CenatusLtdWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: [name: CenatusLtd.PubSub]
 
 # Configures Elixir's Logger
 config :logger, :console,
