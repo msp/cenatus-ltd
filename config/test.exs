@@ -14,7 +14,8 @@ if System.get_env("DATABASE_URL") do
   config :cenatus_ltd, CenatusLtd.Repo,
     adapter: Ecto.Adapters.Postgres,
     url: System.get_env("DATABASE_URL"),
-    pool: Ecto.Adapters.SQL.Sandbox
+    pool: Ecto.Adapters.SQL.Sandbox,
+    ssl: true
 else
   config :cenatus_ltd, CenatusLtd.Repo,
     adapter: Ecto.Adapters.Postgres,
