@@ -1,14 +1,19 @@
 {
   "name": "Cenatus",
-  "description": "A website",
+  "description": "A creative technology production company",
   "repository": "https://github.com/msp/cenatus-ltd",
-  "keywords": ["elixir", "phoenix", "cenatus"],
+  "keywords": [
+    "elixir",
+    "phoenix",
+    "cenatus"
+  ],
   "website": "https://cenatus.org/",
   "addons": [
     "heroku-postgresql:hobby-dev"
   ],
+  "stack": "heroku-20",
   "env": {
-   "MIX_ENV": "test",
+    "MIX_ENV": "test",
     "SECRET_KEY_BASE": {
       "generator": "secret"
     }
@@ -17,8 +22,12 @@
     "postdeploy": "mix ecto.migrate"
   },
   "buildpacks": [
-    { "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git" },
-    { "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git" }
+    {
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git"
+    },
+    {
+      "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git"
+    }
   ],
   "success_url": "/"
 }
