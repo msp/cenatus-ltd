@@ -5,10 +5,7 @@
       %a.smaller{href= '#{Routes.article_path(@conn, :edit, @article)}'}
         [edit]
 
-  .content.lp= @article.content |> as_html
-
-    - if @article.section.name == "Blog" do
-      %p /msp
+  .content.lp.mb-2.mb-md-4= @article.content |> as_html
 
   %p.lp.nbm.tags
     Section:
