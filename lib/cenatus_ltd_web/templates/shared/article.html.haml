@@ -29,10 +29,19 @@
   %p.lp.mt-md-4.smaller
     This project is gratefully supported by the Arts Council England as part of their
     %a{href: "https://www.artscouncil.org.uk/DYCP"} DYCP
-    fund
+    fund.
 
   %a{href: "https://www.artscouncil.org.uk/DYCP", target: "BLANK"}
     %img.lp.my-md-2.partner-logo{alt: "ACE DYCP", src: "https://www.artscouncil.org.uk/sites/default/files/download-file/grant_jpeg_black.jpg"}
+
+- if Enum.any?(@article.tags, fn a -> a.name == "cif2021" end) do
+  %p.lp.mt-md-4.smaller
+    This project is gratefully supported by
+    %a{href: "https://www.ukri.org/councils/innovate-uk"} Innovate UK
+    , the UK’s innovation agency.
+
+  %a{href: "https://www.ukri.org/councils/innovate-uk", target: "BLANK"}
+    %img.lp.my-md-2.partner-logo{alt: "ACE DYCP", src: "https://res.cloudinary.com/cenatus/image/upload/c_thumb,w_400,g_face/v1635182320/UKRI_logo_bcsbmd.png"}
 
 -# // EXPERIMENT
 -# .row
