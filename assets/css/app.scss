@@ -186,10 +186,17 @@ article.preview, article.show, main {
     }
   }
 
-
   .summary, .content {
     padding-bottom: 20px;
     padding-right: 50px;
+  }
+}
+
+article.show {
+  img:not(.header){
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      width: 50%;
+    }
   }
 }
 
