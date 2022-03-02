@@ -9,7 +9,7 @@ defmodule CenatusLtdWeb.LayoutView do
       conn.assigns[:article] ->
         conn.assigns[:article].title
 
-      conn.assigns[:articles] ->
+      conn.assigns[:articles] && length(conn.assigns[:articles]) > 0 ->
         Enum.at(conn.assigns[:articles], 0).title
 
       true ->
@@ -25,7 +25,7 @@ defmodule CenatusLtdWeb.LayoutView do
       conn.assigns[:article] ->
         conn.assigns[:article].summary
 
-      conn.assigns[:articles] ->
+      conn.assigns[:articles] && length(conn.assigns[:articles]) > 0 ->
         Enum.at(conn.assigns[:articles], 0).summary
 
       true ->
@@ -42,7 +42,7 @@ defmodule CenatusLtdWeb.LayoutView do
         conn.assigns[:article] ->
           conn.assigns[:article].image_url
 
-        conn.assigns[:articles] ->
+        conn.assigns[:articles] && length(conn.assigns[:articles]) > 0 ->
           Enum.at(conn.assigns[:articles], 0).image_url
 
         true ->
