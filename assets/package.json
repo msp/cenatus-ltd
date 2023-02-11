@@ -24,6 +24,6 @@
     "twitter-text": "1.14.3",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "4.4.0",
-    "webpack-cli": "^2.0.10"
+    "webpack-cli": "^5.0.1"
   }
 }
