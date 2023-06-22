@@ -21,9 +21,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# HAML
-config :phoenix, :template_engines, haml: PhoenixHaml.Engine
-
 # Use Jason for JSON parsing in Phoenix (1.4 upgrade)
 config :phoenix, :json_library, Jason
 

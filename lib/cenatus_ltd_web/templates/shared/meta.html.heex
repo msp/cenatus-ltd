@@ -1,0 +1,27 @@
+<div class="row meta">
+  <div class="col-md-4">
+    <aside class="twitter lp">
+      <h4>said</h4>
+      <%= render "tweets.html", tweets: @tweets, conn: @conn %>
+    </aside>
+  </div>
+  <div class="col-md-4">
+    <aside>
+      <h4>meta</h4>
+      <div class="tags">
+        <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags) %>
+      </div>
+      <br/>
+      <br/>
+      <div class="tech_tags">
+        <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tech_tags) %>
+      </div>
+    </aside>
+  </div>
+  <div class="col-md-4">
+    <aside class="last-fm">
+      <h4>heard</h4>
+      <%= render "tracks.html", tracks: @tracks, conn: @conn %>
+    </aside>
+  </div>
+</div>

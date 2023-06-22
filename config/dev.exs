@@ -28,7 +28,7 @@ config :cenatus_ltd, CenatusLtdWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/cenatus_ltd_web/views/.*(ex)$},
-      ~r{lib/cenatus_ltd_web/templates/.*(eex|haml)$}
+      ~r{lib/cenatus_ltd_web/templates/.*(eex)$}
     ]
   ]
 

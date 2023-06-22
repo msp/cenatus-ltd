@@ -8,8 +8,9 @@ defmodule CenatusLtd.Periodically do
 
   def init(state) do
     schedule_work()
-    {:ok, Map.merge(state, %{recent_tweets: get_recent_tweets(),
-                            recent_tracks: get_recent_tracks()})}
+
+    {:ok,
+     Map.merge(state, %{recent_tweets: get_recent_tweets(), recent_tracks: get_recent_tracks()})}
   end
 
   def tweets do
@@ -17,7 +18,7 @@ defmodule CenatusLtd.Periodically do
       GenServer.call(__MODULE__, :get_recent_tweets, 2000)
     catch
       :exit, _ ->
-        IO.puts "Bang! get_recent_tweets exited abnormally.. Keep calm."
+        IO.puts("Bang! get_recent_tweets exited abnormally.. Keep calm.")
         []
     end
   end
@@ -27,7 +28,7 @@ defmodule CenatusLtd.Periodically do
       GenServer.call(__MODULE__, :get_recent_tracks, 2000)
     catch
       :exit, _ ->
-        IO.puts "Bang! get_recent_tracks exited abnormally.. Keep calm."
+        IO.puts("Bang! get_recent_tracks exited abnormally.. Keep calm.")
         []
     end
   end
@@ -44,8 +45,8 @@ defmodule CenatusLtd.Periodically do
   def handle_info(:work, state) do
     schedule_work()
 
-    {:noreply, Map.merge(state, %{recent_tweets: get_recent_tweets(),
-                                  recent_tracks: get_recent_tracks()})}
+    {:noreply,
+     Map.merge(state, %{recent_tweets: get_recent_tweets(), recent_tracks: get_recent_tracks()})}
   end
 
   ############################## Private #######################################
@@ -58,38 +59,40 @@ defmodule CenatusLtd.Periodically do
       ExTwitter.user_timeline(screen_name: "mattspendlove", count: 5)
     rescue
       ce in ExTwitter.ConnectionError ->
-        IO.puts "Connection error getting latest tweets! #{inspect ce}"
+        IO.puts("Connection error getting latest tweets! #{inspect(ce)}")
         []
+
       e in ExTwitter.Error ->
-        IO.puts "Error getting latest tweets! #{inspect e}"
+        IO.puts("Error getting latest tweets! #{inspect(e)}")
         []
+
       se in Poison.SyntaxError ->
-        IO.puts "Error parsing latest tweets! #{inspect se}"
+        IO.puts("Error parsing latest tweets! #{inspect(se)}")
         []
     end
   end
 
   defp get_recent_tracks() do
-    endpoint = "user"
-    query = "polymorphic"
+    user = "polymorphic"
     args = [limit: 15, page: 1, extended_info: 0]
-    api_version = "2.0"
-    url = "#{endpoint}.getrecenttracks&user=#{query}&limit=#{args[:limit]}&page=#{args[:page]}&extended#{args[:extended_info]}"
 
     try do
-      case Elixirfm.get_request(url, api_version) do
+      case Elixirfm.User.recent_tracks(user, args) do
         {:ok, tracks} ->
+          IO.puts("Got tracks! #{inspect(tracks)}")
           tracks
+
         {:error, error} ->
-          IO.puts "Error getting tracks! #{inspect error}"
+          IO.puts("Error getting tracks! #{inspect(error)}")
           nil
+
         {:error, message, error} ->
-          IO.puts "Error getting tracks!! #{message} #{inspect error}"
+          IO.puts("Error getting tracks!! #{message} #{inspect(error)}")
           nil
       end
     rescue
       re in Elixirfm.RequestError ->
-        IO.puts "Connection error getting latest tracks! #{inspect re}"
+        IO.puts("Connection error getting latest tracks! #{inspect(re)}")
         nil
     end
   end

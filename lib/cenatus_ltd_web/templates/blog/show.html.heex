@@ -1,0 +1,42 @@
+<div class="row mt-4">
+  <div class="col-md-6">
+    <article class="show">
+      <img data-src={@article.image_url} class='cld-responsive header' />
+    </article>
+  </div>
+
+  <div class="col-md-6 related">
+    <%= if length(@related) > 0 do %>
+      <h3 class="lp">related posts</h3>
+      <ul>
+        <%= for related <- @related do %>
+          <li>
+            <a href={Routes.blog_path(@conn, :show, related)} >
+              <%= related.title %>
+            </a>
+          </li>
+        <% end %>
+        <li>
+          <a href={Routes.blog_path(@conn, :index)} >
+            All posts
+          </a>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render CenatusLtdWeb.SharedView, "article.html", article: @article, current_user: @current_user, conn: @conn %>
+
+    <div id="#disqus_thread" class="mt-4 mb-5"></div>
+
+    <script type='text/javascript'>
+      var disqus_config = function () {
+        this.page.url = "<%= Routes.article_url(@conn, :edit, @article) %>";
+        this.page.identifier = '<%= "blog-article-#{@article.id}" %>';
+      };
+    </script>
+  </div>
+</div>

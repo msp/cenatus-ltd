@@ -1,0 +1,36 @@
+<footer>
+  <div class="row justify-content-between">
+    <div class="col-xs-12 col-md-4 address">
+      <%= render CenatusLtdWeb.SharedView, "address.html" %>
+    </div>
+    <div class="col-xs-12 col-md-4 links">
+      <ul>
+        <li>
+          <a href="/about">about</a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href={Routes.blog_path(@conn, :index)}>blog</a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="https://www.specificfeeds.com/cenatus">rss</a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="https://www.specificfeeds.com/cenatus?subParam=followPub">subs</a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="/contact">contact</a>
+        </li>
+        <%#
+        <li> | </li>
+        <li>
+          <a href="https://madmimi.com/signups/subscribe/27129" target="_blank">subscribe</a>
+        </li>
+        %>
+      </ul>
+    </div>
+  </div>
+</footer>

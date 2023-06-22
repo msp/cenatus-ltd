@@ -1,0 +1,31 @@
+<%= CenatusLtdWeb.SharedView.render_page_title(@conn) %>
+
+<div class="row content blog">
+  <div class="col-12 col-md-9 blog-articles">
+    <%= for {article, _index} <- Enum.with_index(@articles) do %>
+      <%= render "blog_article_preview.html", article: article, conn: @conn %>
+    <% end %>
+  </div>
+  <div class="col-12 col-md-3 order-md-last blog-aside">
+    <aside class="px-md-5">
+      <h4>categories</h4>
+      <div class="categories">
+        <%= CenatusLtdWeb.ArticleView.render_categories_as_links_from(@conn, @categories) %>
+      </div>
+    </aside>
+    <aside class="px-md-5">
+      <h4>tags</h4>
+      <div class="tags">
+        <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags) %>
+      </div>
+    </aside>
+    <aside class="px-md-5">
+      <h4>tech</h4>
+      <div class="tags">
+        <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tech_tags) %>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<%= render CenatusLtdWeb.SharedView, "meta.html", conn: @conn, tweets: @tweets, tags: @tags, tech_tags: @tech_tags, tracks: @tracks %>

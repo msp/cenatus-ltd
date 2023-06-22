@@ -1,0 +1,23 @@
+<div class="col-md-6">
+  <%#
+  <div class="overlay" id='article-#{article.id}'>
+    <a href='#{Routes.article_path(@conn, :show, article)}'>view article</a>
+  </div>
+  %>
+
+  <div class="hotspot">
+    <article class="preview">
+      <a href={Routes.article_path(@conn, :show, @article)}>
+        <img data-src={@article.image_url} class='cld-responsive' />
+      </a>
+      <h4 class="lp">
+        <a href={Routes.article_path(@conn, :show, @article)}>
+          <%= @article.title %>
+        </a>
+      </h4>
+      <div class="summary lp">
+        <%= @article.summary |> as_html %>
+      </div>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="row mt-4">
+  <div class="col-md-6">
+    <article class="show">
+      <img data-src={@article.image_url} class='cld-responsive header' />
+    </article>
+  </div>
+
+  <div class="col-md-6 related">
+    <%= if length(@related) > 0 do %>
+      <h3 class="lp">related articles</h3>
+      <ul>
+        <%= for related <- @related do %>
+          <li>
+            <a href={Routes.article_path(@conn, :show, related)} >
+              <%= related.title %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render CenatusLtdWeb.SharedView, "article.html", article: @article, current_user: @current_user, conn: @conn %>
+  </div>
+</div>
