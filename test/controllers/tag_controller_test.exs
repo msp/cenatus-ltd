@@ -67,6 +67,7 @@ defmodule CenatusLtdWeb.TagControllerTest do
         title: "some title",
         summary: "some content",
         content: "some content",
+        image_url: "http://somewhere.com/tag/image.jpg",
         published_at: %DateTime{
           day: 17,
           month: 4,
@@ -84,13 +85,13 @@ defmodule CenatusLtdWeb.TagControllerTest do
       changeset =
         CenatusLtdWeb.Article.changeset(
           %CenatusLtdWeb.Article{},
-          Map.merge(attrs, %{tags: "creative"})
+          Map.merge(attrs, %{tags: "creativetag"})
         )
 
       article = Repo.insert!(changeset)
 
       conn = get(conn, tag_path(conn, :show, Enum.at(article.tags, 0)))
-      assert html_response(conn, 200) =~ "''"
+      assert html_response(conn, 200) =~ "creativetag"
     end
 
     test "renders page not found when id is nonexistent", %{conn: conn} do
