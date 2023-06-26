@@ -1,18 +1,43 @@
 <header class="header mb-4">
-  <div class="row">
-    <div class="col-md-6 logo">
-      <a href="/">
-        <%= render("cenatus-logo.html") %>
-      </a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid p-0">
+      <div class="logo d-none d-lg-block d-xl-block">
+        <a class="navbar-brand" href="/">
+          <%= render("cenatus-logo.html") %>
+        </a>
+      </div>
+      <button class="navbar-toggler my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Cenatus</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <%!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul> --%>
+
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <%= for menu_item <- [:creative, :technology, :production] do %>
+            <li class="nav-item cl-effect-1 text-nowrap me-lg-5 py-3 py-lg-0 ">
+              <a href={"/#{menu_item}"}
+                aria-current={CenatusLtdWeb.NavView.is_active?(:aria, @conn, menu_item)}
+                class={"nav-link #{CenatusLtdWeb.NavView.is_active?(:link, @conn, menu_item)}"}>
+                <%= menu_item %>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col-4 col-md-2 category cl-effect-1">
-      <a href="/creative">creative</a>
-    </div>
-    <div class="col-4 col-md-2 category cl-effect-1">
-      <a href="/technology">technology</a>
-    </div>
-    <div class="col-4 col-md-2 category cl-effect-1">
-      <a href="/production">production</a>
-    </div>
-  </div>
+  </nav>
 </header>

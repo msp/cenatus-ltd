@@ -98,7 +98,8 @@ body {
 header {
   @include divider;
 
-  .row {
+  .row,
+  .navbar {
 
     .logo,
     .category {
@@ -106,7 +107,6 @@ header {
       align-items: center;
       // justify-content: center;
 
-      height: 140px;
       color: $cenatus-blue;
       // text-align: center;
       // border: 1px solid blue;
@@ -118,7 +118,7 @@ header {
       // border: 1px solid red;
       svg {
         // border: 1px solid green;
-        width: 130%;
+        width: 400px;
         margin-left: -5%;
       }
 
@@ -140,20 +140,6 @@ header {
 
       &:hover {
         text-decoration: none;
-      }
-    }
-  }
-}
-
-// FF only SVG sizing :/
-@-moz-document url-prefix() {
-  header {
-    .row {
-      .logo {
-        svg {
-          border: 0px solid purple;
-          width: 60%;
-        }
       }
     }
   }
@@ -468,17 +454,6 @@ footer {
 
   header {
     .row {
-      padding-top: 30px;
-
-      .logo {
-        height: 40px;
-
-        svg {
-          width: 80%;
-          margin: 0 auto;
-        }
-      }
-
       .category {
         padding-top: 40px;
         padding-bottom: 20px;
@@ -527,17 +502,6 @@ footer {
 @media screen and (min-width : 375px) and (max-width : 667px) {
   header {
     .row {
-      padding-top: 30px;
-
-      .logo {
-        height: 100px;
-
-        svg {
-          width: 110%;
-          margin: 0 auto;
-        }
-      }
-
       .category {
         padding-top: 40px;
         padding-bottom: 20px;
@@ -590,14 +554,6 @@ footer {
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
   header {
     .row {
-      .logo {
-        svg {
-          width: 80%;
-          margin: 0 auto;
-        }
-
-      }
-
       .category:first-of-type {
         border: 0px;
       }
@@ -611,10 +567,6 @@ footer {
 
   header {
     .row {
-      .logo {
-        height: 140px;
-      }
-
       .category {
 
         // border: 1px solid red;
@@ -666,18 +618,6 @@ footer {
 
   header {
     .row {
-      padding-top: 30px;
-
-      .logo {
-        border: 0px solid red;
-        height: 140px;
-        margin-bottom: 40px;
-
-        svg {
-          width: 110%
-        }
-      }
-
       .category {
         padding-bottom: 20px;
         height: 40px;
@@ -729,15 +669,6 @@ footer {
 
   header {
     .row {
-      .logo {
-        border: 0px solid red;
-
-        svg {
-          // border: 1px solid green;
-          width: 100%;
-        }
-      }
-
       .category {
         border: 0px solid green;
         padding-top: 75px;

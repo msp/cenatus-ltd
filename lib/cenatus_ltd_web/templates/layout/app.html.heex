@@ -5,9 +5,14 @@
   <%= render("_head.html", conn: @conn) %>
 </head>
 
-<body class='#{CenatusLtdWeb.PageView.handler_info @conn}'>
+<body class={CenatusLtdWeb.PageView.handler_info(@conn)}>
   <div class="container-fluid cenatus">
-    <%= render("_navbar.html") %>
+    <%= render("_navbar.html",
+          conn: @conn,
+          classList: @class_list,
+          container: @container,
+          button: "primary")
+          %>
 
     <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
