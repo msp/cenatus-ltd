@@ -15,7 +15,7 @@
       <td><%= tag.name %></td>
       <td><%= article_count_for(tag) %></td>
 
-      <td class="text-right">
+      <td class="text-end">
         <%= link "Show", to: Routes.tag_path(@conn, :show, tag), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: Routes.tag_path(@conn, :edit, tag), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: Routes.tag_path(@conn, :delete, tag), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>

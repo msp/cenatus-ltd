@@ -19,7 +19,7 @@
       <td colspan="1">
           <span class="bold"><%= formatted(article.published_at) %></span>
       </td>
-      <td class="actions text-right" colspan="1">
+      <td class="actions text-end" colspan="1">
         <%= link "Show", to: Routes.article_path(@conn, :show, article), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: Routes.article_path(@conn, :edit, article), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: Routes.article_path(@conn, :delete, article), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
