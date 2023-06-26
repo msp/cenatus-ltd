@@ -406,7 +406,9 @@ textarea#article_summary.form-control {
 }
 
 footer {
-  .row {
+
+  .row,
+  .sidebar {
     @include divider-top;
     padding-bottom: 20px;
 
@@ -420,6 +422,15 @@ footer {
 
     .links {
       padding-top: 10px;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+      }
     }
 
     .address {
@@ -447,6 +458,7 @@ footer {
     }
   }
 }
+
 
 /* ----------- iPhone 5 and 5S ----------- */
 
