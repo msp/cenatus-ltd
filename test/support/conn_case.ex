@@ -31,6 +31,8 @@ defmodule CenatusLtdWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint CenatusLtdWeb.Endpoint
+
+      use CenatusLtdWeb, :verified_routes
     end
   end
 

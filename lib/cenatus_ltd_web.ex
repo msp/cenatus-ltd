@@ -26,6 +26,8 @@ defmodule CenatusLtdWeb do
     end
   end
 
+  def static_paths, do: ~w(assets css fonts images js sitemaps favicon.ico robots.txt)
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: CenatusLtdWeb
@@ -38,6 +40,8 @@ defmodule CenatusLtdWeb do
 
       import CenatusLtdWeb.Gettext
       import CenatusLtdWeb.Auth, only: [authenticate_user: 2]
+
+      unquote(verified_routes())
     end
   end
 
@@ -68,6 +72,12 @@ defmodule CenatusLtdWeb do
     end
   end
 
+  defp view_helpers do
+    quote do
+      unquote(verified_routes())
+    end
+  end
+
   def router do
     quote do
       use Phoenix.Router
@@ -92,5 +102,14 @@ defmodule CenatusLtdWeb do
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
+  end
+
+  def verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: CenatusLtdWeb.Endpoint,
+        router: CenatusLtdWeb.Router,
+        statics: CenatusLtdWeb.static_paths()
+    end
   end
 end
