@@ -18,32 +18,8 @@ config :cenatus_ltd, CenatusLtdWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-# Configure your database
-config :cenatus_ltd, CenatusLtd.Repo,
-  url: System.get_env("DATABASE_URL"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  ssl: true
-
 # Do not print debug messages in production
 config :logger, level: :info
-
-# AWS
-config :ex_aws,
-  access_key_id: [{:system, "AWS_ACCESS_KEY_ID"}, :instance_role],
-  secret_access_key: [{:system, "AWS_SECRET_ACCESS_KEY"}, :instance_role],
-  region: "eu-central-1",
-  debug_requests: true
-
-# Twitter App
-config :extwitter, :oauth,
-  consumer_key: System.get_env("CONSUMER_KEY"),
-  consumer_secret: System.get_env("CONSUMER_SECRET"),
-  access_token: System.get_env("ACCESS_TOKEN"),
-  access_token_secret: System.get_env("ACCESS_TOKEN_SECRET")
-
-config :elixirfm,
-  api_key: System.get_env("LASTFM_API_KEY"),
-  secret_key: System.get_env("LASTFM_SECRET_KEY")
 
 # ## SSL Support
 #
