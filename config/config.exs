@@ -16,6 +16,26 @@ config :cenatus_ltd, CenatusLtdWeb.Endpoint,
   render_errors: [view: CenatusLtdWeb.ErrorView, accepts: ~w(html json)],
   pubsub_server: CenatusLtd.PubSub
 
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.18.6",
+  default: [
+    args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+  # https://github.com/CargoSense/dart_sass
+config :dart_sass,
+  version: "1.61.0",
+  default: [
+    args: [
+      "css/app.scss",
+      "../priv/static/assets/from_scss.css"
+    ],
+    cd: Path.expand("../assets", __DIR__)
+]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

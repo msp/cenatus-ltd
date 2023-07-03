@@ -7,18 +7,22 @@ import Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :cenatus_ltd, CenatusLtdWeb.Endpoint,
-  http: [port: 4000],
+http: [ip: {0, 0, 0, 0}, port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch-stdin",
-      cd: Path.expand("../assets", __DIR__)
-    ]
+    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
+    esbuild: {
+      Esbuild,
+      :install_and_run,
+      [:default, ~w(--sourcemap=inline --watch)]
+    },
+    sass: {
+      DartSass,
+      :install_and_run,
+      [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
+    }
   ]
 
 # Watch static and templates for browser reloading.
@@ -48,6 +52,7 @@ config :cenatus_ltd, CenatusLtd.Repo,
   username: "cenatus",
   database: "cenatus_ltd_dev",
   hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
 config :ex_aws,

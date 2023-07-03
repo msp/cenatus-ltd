@@ -50,9 +50,11 @@ defmodule CenatusLtd.Mixfile do
   defp deps do
     [
       {:comeonin, "~> 2.0"},
+      {:dart_sass, "~> 0.6", runtime: Mix.env() == :dev},
       {:earmark, "~> 1.2.2"},
       {:ecto_sql, "~> 3.0"},
       {:elixirfm, "~> 1.0.0"},
+      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:ex_aws, "~> 1.0"},
       {:extwitter, "~> 0.12"},
       {:floki, "~> 0.21.0"},
@@ -88,9 +90,15 @@ defmodule CenatusLtd.Mixfile do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "assets.deploy": [
+        "esbuild default --minify",
+        "sass default --no-source-map --style=compressed",
+        "phx.digest"
+      ]
     ]
   end
 end
