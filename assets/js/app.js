@@ -34,6 +34,9 @@ $(document).ready(function() {
 
 
   const home = (window.location.pathname === "/");
+  const blog = (window.location.pathname === "/blog");
+  const articlesSelector = blog ? ".blog-articles" : ".articles";
+
   // $('.hotspot').hover(
   //   function(event) {
   //     console.log('enter');
@@ -47,20 +50,15 @@ $(document).ready(function() {
   //   }
   // );
 
-  $('.hotspot').hover(function() {
-    $(this).parents('.col-md-6').find('.overlay').stop().fadeToggle('fast', function() {
-      if ($(this).is(':visible'))
-        $(this).css('display', 'flex');
-    });
-  });
+  // $('.hotspot').hover(function() {
+  //   $(this).parents('.col-md-6').find('.overlay').stop().fadeToggle('fast', function() {
+  //     if ($(this).is(':visible'))
+  //       $(this).css('display', 'flex');
+  //   });
+  // });
 
   const runAnimation = (mix_env != 'dev');
-
-
-
-  TweenLite.set("header", { visibility: "visible" });
-  TweenLite.set("main", { visibility: "visible" });
-  TweenLite.set("footer", { visibility: "visible" });
+  const mobileView = $('.navbar-toggler:visible').length > 0;
 
   if (runAnimation) {
     const tl = new TimelineLite({ onComplete: startLogoAnimation });
@@ -73,26 +71,37 @@ $(document).ready(function() {
     }
 
     if (home) {
-      tl.to('.home .cenatus', 1, { opacity: 1 })
-        .from(".home .header ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .from(".home .logo ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
-        .staggerFrom(".logo-circle", 0.01, { autoAlpha: 0, scale: 1, ease: Back.easeOut }, 0.05)
-        .staggerFrom(".logo-letter", 0.01, { autoAlpha: 0, scale: 1, ease: Back.easeOut }, 0.1)
-        .staggerFrom(".home .category ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .from('.articles', 0.1, { opacity: 0 })
-        .staggerFrom(".articles .preview", 0.2, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .from(".home .meta ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .staggerFrom(".home .meta aside", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
-        .from('.home footer', 1, { opacity: 0 })
-
+      if (!mobileView) {
+        tl.to('.home .cenatus', 0.001, { opacity: 1 })
+          .from(".home .logo ", 0.3, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
+          .to('header', 0.01, { visibility: "visible" })
+          .staggerFrom(".logo-circle", 0.01, { autoAlpha: 0, scale: 1, ease: Back.easeOut }, 0.05)
+          .staggerFrom(".logo-letter", 0.01, { autoAlpha: 0, scale: 1, ease: Back.easeOut }, 0.1)
+          .staggerFrom(".home .header .nav-item ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
+          .staggerFrom(".home .category ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
+          .to('main', 0.01, { visibility: "visible" })
+          .from(articlesSelector, 0.1, { opacity: 0 })
+          .staggerFrom(`${articlesSelector} .preview`, 1.0, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
+          .to('footer', 0.01, { visibility: "visible" })
+          .from(".home .meta ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
+          .staggerFrom(".home .meta aside", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
+          .from('.home footer', 1, { opacity: 0 })
+      } else {
+        mobileAnimation(tl, articlesSelector);
+      }
 
     } else {
-      tl.from('.articles', 0.2, { opacity: 0 })
-        .from("header ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .staggerFrom(".articles .preview", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .from(".meta ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
-        .staggerFrom(".meta aside", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
-        .from('footer', 1, { opacity: 0 })
+      if (!mobileView) {
+        tl.from(articlesSelector, 0.1, { opacity: 0 })
+          .staggerFrom(`${articlesSelector} .preview`, 1.0, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
+          .staggerFrom(".blog-aside", 0.3, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
+          .to('footer', 0.01, { visibility: "visible" })
+          .from(".meta ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
+          .staggerFrom(".meta aside", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
+          .from('footer', 1, { opacity: 0 })
+      } else {
+        mobileAnimation(tl, articlesSelector);
+      }
     }
   }
 
@@ -108,3 +117,13 @@ $(document).ready(function() {
 
   console.log("------------- DONE onload -------------");
 });
+
+
+function mobileAnimation(tl, articlesSelector) {
+  tl.to('header', 0.01, { visibility: "visible" })
+    .to('.home .cenatus', 0.01, { opacity: 1 })
+    .to('main', 0.01, { visibility: "visible" })
+    .from(articlesSelector, 0.1, { opacity: 0 })
+    .staggerFrom(`${articlesSelector} .preview`, 1.5, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
+    .to('footer', 0.01, { visibility: "visible" })
+}
