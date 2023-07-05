@@ -18,6 +18,7 @@
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
     <main role="main">
+      <%= render("_spinner.html") %>
       <%= @inner_content %>
     </main>
 

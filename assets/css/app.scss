@@ -146,6 +146,24 @@ header {
   }
 }
 
+#spinner {
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  // background-color: #4A4A4A;
+  // border: 1px solid gray;
+
+  svg {
+    // stroke: $cenatus-blue;
+    fill: $cenatus-blue;
+    width: 100%;
+    height: 15%;
+    // border: 1px solid red;
+    // background-color: gray;
+  }
+}
+
 table.articles {
   tr.heading {
     background-color: #ccc;
@@ -160,6 +178,7 @@ table.articles {
   }
 }
 
+.articles,
 .home main,
 .home header,
 .home footer {
