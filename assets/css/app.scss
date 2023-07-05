@@ -561,6 +561,15 @@ footer {
   article.show,
   main {
 
+    h1,
+    h2,
+    h3,
+    h4,
+    .tag_page_title {
+      white-space: normal;
+      overflow: auto;
+    }
+
     .summary,
     .content {
       padding-bottom: 30px;
