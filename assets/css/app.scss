@@ -1,11 +1,16 @@
-/* This file is for your main application (s)css. */
-
 $cenatus-blue: #6CA8DC;
 $cenatus-light-grey: #ccc;
 $cenatus-light-blue: #BAD5ED;
 $cenatus-font-color: #4A4A4A;
-$cenatus-font-size: 16px;
-$cenatus-line-height: 30px;
+
+// https://getbootstrap.com/docs/5.0/customize/css-variables/
+//
+:root {
+  --bs-body-font-size: 1.0rem;
+  --bs-body-line-height: 1.6;
+  // e.g.
+  // --font-size-base: #{$my-sass-var};
+}
 
 // These are Bootstrap defaults
 $grid-breakpoints: (
@@ -24,10 +29,13 @@ $grid-breakpoints: (
   border-top: 1px dashed $cenatus-light-blue;
 }
 
+@mixin cenatus-smaller-font {
+  font-size: calc(var(--bs-body-font-size) - 2px);
+  line-height: calc(var(--bs-body-line-height) + 0.2);
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: $cenatus-font-size;
-  line-height: $cenatus-line-height;
   color: $cenatus-font-color;
   font-weight: 100;
 }
@@ -151,16 +159,11 @@ header {
   height: 50vh;
   justify-content: center;
   align-items: center;
-  // background-color: #4A4A4A;
-  // border: 1px solid gray;
 
   svg {
-    // stroke: $cenatus-blue;
     fill: $cenatus-blue;
     width: 100%;
     height: 15%;
-    // border: 1px solid red;
-    // background-color: gray;
   }
 }
 
@@ -272,8 +275,7 @@ article.show {
 
 .meta {
   @include divider-top;
-  font-size: $cenatus-font-size - 2;
-  line-height: $cenatus-line-height - 5;
+  @include cenatus-smaller-font();
 
   .twitter {
     .tweet {
@@ -333,8 +335,7 @@ article.show {
 .tags,
 .tech_tags,
 .categories {
-  font-size: $cenatus-font-size - 2;
-  line-height: $cenatus-line-height - 5;
+  @include cenatus-smaller-font();
 
   li {
     display: inline-block;
