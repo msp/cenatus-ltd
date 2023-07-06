@@ -12,32 +12,34 @@
     <%= @article.content |> as_html %>
   </div>
 
-  <p class="lp nbm tags">
+  <p class="lp nbm tags smaller">
     Section:
-    <%= @article.section.name %>
+    <span class="bold">
+      <%= @article.section.name %>
+    </span>
   </p>
   <%= if @article.category do %>
-    <p class="lp nbm tags">
+    <p class="lp nbm tags smaller">
       Category:
-      <%= @article.category.name %>
+      <%= CenatusLtdWeb.ArticleView.render_categories_as_links_from(@conn, [@article.category]) %>
     </p>
   <% end %>
   <%= if length(@article.tags) > 0 do %>
-    <p class="lp nbm tags">
+    <p class="lp nbm tags smaller">
       Filed as:
-      <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @article.tags) %>
+      [<%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @article.tags) %>]
     </p>
   <% end %>
 
-  <p class="ml-md-3 mt-2 published smaller">
+  <p class="lp ml-md-3 mt-4 published smaller">
     Published on
-    <%= @article.published_at |> formatted %>
+      <%= @article.published_at |> formatted %>
   </p>
 
 </article>
 
 <%= if Enum.any?(@article.tags, fn a -> a.name == "dycp" end) do %>
-  <p class="lp mt-md-4 smaller">
+  <p class="lp my-4 mt-md-4 smaller">
     This project is gratefully supported by the Arts Council England as part of their
     <a href="https://www.artscouncil.org.uk/DYCP"> DYCP.</a>
     fund.
@@ -49,7 +51,7 @@
 <% end %>
 
 <%= if Enum.any?(@article.tags, fn a -> a.name == "cif2021" end) do %>
-  <p class="lp mt-md-4 smaller">
+  <p class="lp my-4 mt-md-4 smaller">
     This project is gratefully supported by
     <a href="https://www.ukri.org/councils/innovate-uk"> Innovate UK</a>, the UK’s innovation agency.
   </p>

@@ -156,9 +156,13 @@ header {
 
 #spinner {
   display: flex;
-  height: 50vh;
+  height: 90vh;
   justify-content: center;
   align-items: center;
+
+  #spinner-wrapper {
+    height: 50vh;
+  }
 
   svg {
     fill: $cenatus-blue;
@@ -182,9 +186,10 @@ table.articles {
 }
 
 .articles,
-.home main,
-.home header,
-.home footer {
+.blog-articles,
+.blog-aside,
+header,
+footer {
   visibility: hidden;
 }
 
@@ -228,6 +233,16 @@ article.show {
   img:not(.header) {
     @media (min-width: map-get($grid-breakpoints, md)) {
       width: 50%;
+    }
+  }
+
+  .tags {
+    a {
+      color: $cenatus-blue;
+
+      &:hover {
+        color: $cenatus-blue;
+      }
     }
   }
 }
@@ -533,7 +548,29 @@ footer {
 /* ----------- iPhone 6 ----------- */
 /* iPhone 6 Portrait */
 @media screen and (min-width : 375px) and (max-width : 667px) {
+
+  // LHS is orig, RHS is offset
+  h3 {
+    font-size: 1.75rem + 0.5;
+  }
+
+  h4 {
+    font-size: 1.5rem + 0.5;
+  }
+
+  body {
+    --bs-body-font-size: 1.4rem;
+    --bs-body-line-height: 1.7;
+  }
+
   header {
+    .navbar {
+      a {
+        font-size: 28px;
+        font-weight: 500;
+      }
+    }
+
     .row {
       .category {
         padding-top: 40px;

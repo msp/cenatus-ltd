@@ -31,10 +31,21 @@ $(document).ready(function() {
 
   const home = (window.location.pathname === "/");
   const blog = (window.location.pathname === "/blog");
+  const admin = window.location.pathname.includes("/admin");
   const articlesSelector = blog ? ".blog-articles" : ".articles";
-  const runAnimation = (mix_env != 'dev');
+  const runAnimation = (mix_env != 'dev' && !admin);
   const mobileView = $('.navbar-toggler:visible').length > 0;
   const tweets = $('.tweet .text');
+
+  if (!runAnimation) {
+    $('#spinner').hide();
+
+    TweenLite.set("header", { visibility: "visible" });
+    TweenLite.set("main", { visibility: "visible" });
+    TweenLite.set("table.articles", { visibility: "visible" });
+    TweenLite.set(`${articlesSelector} .preview`, { visibility: "visible" });
+    TweenLite.set("footer", { visibility: "visible" });
+  }
 
   $('main').imagesLoaded()
     .always(function(instance) {
@@ -47,11 +58,6 @@ $(document).ready(function() {
 
       if (runAnimation) {
         startAnimation(home, mobileView, articlesSelector);
-      } else {
-        TweenLite.set("header", { visibility: "visible" });
-        TweenLite.set("main", { visibility: "visible" });
-        TweenLite.set(`${articlesSelector} .preview`, { visibility: "visible" });
-        TweenLite.set("footer", { visibility: "visible" });
       }
     })
     .fail(function() {
@@ -126,13 +132,13 @@ function startAnimation(home, mobileView, articlesSelector) {
     } else {
       mobileAnimation(tl, articlesSelector);
     }
-
   } else {
     if (!mobileView) {
       tl.to('main', 0.01, { visibility: "visible" })
-        .to(articlesSelector, 0.1, { visibility: "visible" })
-        .staggerFrom(`${articlesSelector} .preview`, 1.0, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
+        .to(articlesSelector, 0.01, { visibility: "visible" })
+        .to(".blog-aside", 0.01, { visibility: "visible" })
         .staggerFrom(".blog-aside", 0.3, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
+        .staggerFrom(`${articlesSelector} .preview`, 1.0, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
         .to('footer', 0.01, { visibility: "visible" })
         .from(".meta ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
         .staggerFrom(".meta aside", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.2)
