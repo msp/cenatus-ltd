@@ -19,4 +19,12 @@
 
   <link phx-track-static rel="stylesheet" href={ Routes.static_path(@conn, "/assets/from_scss.css")} />
 
+  <%= if CenatusLtdWeb.PageView.handler_info(@conn) == "home" do %>
+    <style>
+      header {
+        visibility: hidden;
+      }
+    </style>
+  <% end %>
+
   <%= csrf_meta_tag() %>

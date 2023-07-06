@@ -135,6 +135,7 @@ function startAnimation(home, mobileView, articlesSelector) {
   } else {
     if (!mobileView) {
       tl.to('main', 0.01, { visibility: "visible" })
+        .to('header', 0.01, { visibility: "visible" })
         .to(articlesSelector, 0.01, { visibility: "visible" })
         .to(".blog-aside", 0.01, { visibility: "visible" })
         .staggerFrom(".blog-aside", 0.3, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
