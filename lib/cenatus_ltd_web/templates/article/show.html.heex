@@ -1,0 +1,24 @@
+<div class="row mt-4">
+  <div class="col-md-6">
+    <article class="show">
+      <img data-src={@article.image_url} class='cld-responsive header' />
+    </article>
+  </div>
+
+  <%= render CenatusLtdWeb.SharedView, "related.html",
+        related: @related,
+        title: "related articles",
+        article_type: :article,
+        conn: @conn
+  %>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render CenatusLtdWeb.SharedView, "article.html",
+          article: @article,
+          current_user: @current_user,
+          conn: @conn
+    %>
+  </div>
+</div>

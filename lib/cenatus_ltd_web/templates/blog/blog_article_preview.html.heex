@@ -1,0 +1,31 @@
+<div class="row mb-4">
+  <div class="col-md-12">
+    <article class="preview pb-3">
+      <div class="row align-items-stretch">
+        <div class="col-12 col-xl-4 pe-md-3">
+          <a href={Routes.blog_path(@conn, :show, @article)} class="link">
+            <img data-src={@article.image_url} class='cld-responsive' />
+          </a>
+        </div>
+        <div class="col-12 col-xl-8">
+          <h4 class="pb-md-2 pt-xl-0">
+            <a href={Routes.blog_path(@conn, :show, @article)} class="link">
+              <%= @article.title %>
+            </a>
+          </h4>
+
+          <div class="summary ml-md-4">
+            <%= @article.summary |> as_html %>
+
+            <a href={Routes.blog_path(@conn, :show, @article)}> more > </a>
+
+            <p class="published my-0 pr-3 text-end smaller">
+              Published on
+              <%= @article.published_at |> formatted %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

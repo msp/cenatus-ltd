@@ -1,0 +1,74 @@
+<header class="header mb-4">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid p-0">
+      <div class="logo d-none d-lg-block d-xl-block">
+        <a class="navbar-brand" href="/">
+          <%= render("cenatus-logo.html") %>
+        </a>
+      </div>
+      <button class="navbar-toggler my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <header class="w-100">
+            <button type="button" class="btn-close me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <a href="/">
+              <h3 class="offcanvas-title text-center w-100 mb-4" id="offcanvasNavbarLabel">Cenatus</h3>
+            </a>
+
+          </header>
+        </div>
+        <div class="offcanvas-body">
+
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-4 mb-lg-0">
+            <%= for menu_item <- [:creative, :technology, :production] do %>
+              <li class="nav-item cl-effect-1 text-nowrap me-lg-5 py-2 py-lg-0">
+                  <a href={"/#{menu_item}"}
+                    aria-current={CenatusLtdWeb.NavView.is_active?(:aria, @conn, menu_item)}
+                    class={"nav-link #{CenatusLtdWeb.NavView.is_active?(:link, @conn, menu_item)}"}>
+                    <%= menu_item %>
+                  </a>
+              </li>
+            <% end %>
+          </ul>
+
+          <footer class="d-lg-none d-xl-none">
+            <div class="sidebar mx-3">
+              <div class="links pt-0">
+                <ul class="w-100">
+                  <li>
+                    <a href="/about" class="fs-5">about</a>
+                  </li>
+                  <li class="fs-5"> | </li>
+                  <li>
+                    <a href={Routes.blog_path(@conn, :index)} class="fs-5">blog</a>
+                  </li>
+                  <li class="fs-5"> | </li>
+                  <li>
+                    <a href="https://www.specificfeeds.com/cenatus" class="fs-5">rss</a>
+                  </li>
+                  <li class="fs-5"> | </li>
+                  <li>
+                    <a href="https://www.specificfeeds.com/cenatus?subParam=followPub" class="fs-5">subs</a>
+                  </li>
+                  <li class="fs-5"> | </li>
+                  <li>
+                    <a href="/contact" class="fs-5">contact</a>
+                  </li>
+                  <%#
+                  <li> | </li>
+                  <li>
+                    <a href="https://madmimi.com/signups/subscribe/27129" target="_blank">subscribe</a>
+                  </li>
+                  %>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

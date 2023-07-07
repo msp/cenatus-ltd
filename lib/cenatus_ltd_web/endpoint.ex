@@ -12,7 +12,7 @@ defmodule CenatusLtdWeb.Endpoint do
     at: "/",
     from: :cenatus_ltd,
     gzip: false,
-    only: ~w(css fonts images js sitemaps favicon.ico robots.txt)
+    only: CenatusLtdWeb.static_paths()
   )
 
   # Code reloading can be explicitly enabled under the

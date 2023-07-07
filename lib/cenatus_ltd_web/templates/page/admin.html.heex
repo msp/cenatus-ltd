@@ -1,0 +1,23 @@
+<div class="row admin">
+  <div class="col-md-6">
+    <article>
+      <ul>
+        <li>
+          <%= link "users", to: Routes.user_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "articles", to: Routes.article_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "sections", to: Routes.section_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "categories", to: Routes.category_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "tags", to: Routes.tag_path(@conn, :index) %>
+        </li>
+      </ul>
+    </article>
+  </div>
+</div>

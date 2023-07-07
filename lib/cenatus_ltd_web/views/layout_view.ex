@@ -49,9 +49,13 @@ defmodule CenatusLtdWeb.LayoutView do
           ""
       end
 
-    case String.starts_with?(image_url, "https:") do
-      true -> image_url
-      false -> if String.length(image_url) > 0, do: "https:#{image_url}", else: image_url
+    if image_url do
+      case String.starts_with?(image_url, "https:") do
+        true -> image_url
+        false -> if String.length(image_url) > 0, do: "https:#{image_url}", else: image_url
+      end
+    else
+      ""
     end
   end
 

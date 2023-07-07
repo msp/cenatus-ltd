@@ -1,0 +1,21 @@
+<div class="col-md-6 related">
+  <%= if length(@related) > 0 do %>
+    <h3 class="lp"><%= @title %></h3>
+    <ul>
+      <%= for related <- @related do %>
+        <li class="mb-2">
+          <a href={related_show_path(@article_type, @conn, related)} >
+            <%= related.title %>
+          </a>
+        </li>
+      <% end %>
+      <%= if @article_type == :blog do %>
+        <li>
+          <a href={Routes.blog_path(@conn, :index)} >
+            All posts
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -7,7 +7,6 @@ defmodule CenatusLtd.Mixfile do
       version: "0.0.1",
       elixir: "~> 1.2",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -51,9 +50,11 @@ defmodule CenatusLtd.Mixfile do
   defp deps do
     [
       {:comeonin, "~> 2.0"},
+      {:dart_sass, "~> 0.6", runtime: Mix.env() == :dev},
       {:earmark, "~> 1.2.2"},
       {:ecto_sql, "~> 3.0"},
-      {:elixirfm, "~> 0.0.10"},
+      {:elixirfm, "~> 1.0.0"},
+      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:ex_aws, "~> 1.0"},
       {:extwitter, "~> 0.12"},
       {:floki, "~> 0.21.0"},
@@ -62,17 +63,21 @@ defmodule CenatusLtd.Mixfile do
       {:html_sanitize_ex, "~> 1.2"},
       {:jason, "~> 1.0"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:phoenix, "~> 1.5.0"},
+      {:phoenix, "~> 1.7.0"},
       {:phoenix_ecto, "~> 4.0"},
-      {:phoenix_haml, "~> 0.2.1"},
-      {:phoenix_html, "~> 2.10"},
+      {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_live_view, "~> 0.18.18"},
+      {:phoenix_live_dashboard, "~> 0.7.2"},
       {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_view, "~> 2.0"},
       {:plug, "~> 1.7"},
       {:plug_cowboy, "~> 2.1"},
       {:poison, "~> 2.0", override: true},
       {:postgrex, ">= 0.0.0"},
       {:sitemap, "~> 0.9"},
+      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_poller, "~> 0.5"},
       {:timex, "~> 3.0"}
     ]
   end
@@ -85,9 +90,15 @@ defmodule CenatusLtd.Mixfile do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "assets.deploy": [
+        "esbuild default --minify",
+        "sass default --no-source-map --style=compressed",
+        "phx.digest"
+      ]
     ]
   end
 end

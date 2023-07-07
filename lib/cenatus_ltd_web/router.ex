@@ -7,6 +7,7 @@ defmodule CenatusLtdWeb.Router do
     plug(:fetch_flash)
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
+    plug(:put_default_css_classes)
     plug(CenatusLtdWeb.Auth, repo: CenatusLtd.Repo)
   end
 
@@ -106,4 +107,10 @@ defmodule CenatusLtdWeb.Router do
   # scope "/api", CenatusLtdWeb do
   #   pipe_through :api
   # end
+
+  def put_default_css_classes(conn, _opts) do
+    conn
+    |> assign(:class_list, "navbar-light bg-white")
+    |> assign(:container, "container-fluid")
+  end
 end

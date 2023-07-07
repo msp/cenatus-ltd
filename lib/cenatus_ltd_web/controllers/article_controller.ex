@@ -6,10 +6,15 @@ defmodule CenatusLtdWeb.ArticleController do
   plug(CenatusLtdWeb.LoadAllCategories)
 
   def index(conn, _params) do
+
     articles =
-      Repo.all(Article)
+      from(article in Article,
+        order_by: [desc: article.published_at]
+      )
+      |> Repo.all()
       |> Repo.preload(:tags)
       |> Repo.preload(:tech_tags)
+
 
     render(conn, "index.html", articles: articles)
   end

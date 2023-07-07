@@ -1,0 +1,16 @@
+<% if length(@tweets) > 0 do %>
+  <ul>
+    <%= for tweet <- @tweets do %>
+      <li class="tweet">
+        <span class="text">
+          <%= tweet.text %>
+        </span>
+        <a href="https://twitter.com/statuses/#{tweet.id}" target="_blank">
+          <span class="glyphicon glyphicon-new-window"></span>
+        </a>
+      </li>
+    <%= end %>
+  </ul>
+<% else %>
+  <p> Tweets not loading right now :( </p>
+<% end %>
