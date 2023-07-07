@@ -199,7 +199,7 @@ main {
   .tag_page_title {
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-right: 50px;
+    padding-right: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -247,13 +247,7 @@ article.show {
     @include divider;
   }
 
-  .summary {
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-    // max-height: 100px; /* exactly three lines */
-    // text-overflow: -o-ellipsis-lastline;
-  }
+  .summary {}
 }
 
 .blog-articles>div.row {
@@ -265,6 +259,8 @@ article.show {
     }
   }
 }
+
+.blog-aside {}
 
 
 .map-responsive {
