@@ -609,6 +609,17 @@ footer {
     display: none;
   }
 
+  .meta {
+    .last-fm {
+      .track {
+        svg {
+          width: calc(var(--bs-body-font-size) - 5px);
+          height: calc(var(--bs-body-font-size) - 5px);
+        }
+      }
+    }
+  }
+
   footer {
     .row {
       .links {
