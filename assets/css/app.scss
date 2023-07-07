@@ -76,7 +76,7 @@ body {
 // auto - sets margin to auto
 
 // phase these out for the bootstrap responsive defaults
-// but bring them into partiy
+// but bring them into parity
 .lp {
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding-left: 1rem;
@@ -477,14 +477,10 @@ footer {
     }
 
     ul {
-      padding-left: 0px;
-      margin-top: 20px;
-    }
-
-    li {
-      list-style: none;
-      float: left;
-      padding-right: 10px;
+      height: 100%;
+      align-items: center;
+      margin-bottom: 0px;
+      ;
     }
   }
 }
