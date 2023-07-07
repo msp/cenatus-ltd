@@ -7,19 +7,19 @@
     <% end %>
   </div>
   <div class="col-12 col-md-3 order-md-last blog-aside">
-    <aside class="px-md-5">
+    <aside class="px-md-5 text-lowercase">
       <h4>categories</h4>
       <div class="categories">
         <%= CenatusLtdWeb.ArticleView.render_categories_as_links_from(@conn, @categories) %>
       </div>
     </aside>
-    <aside class="px-md-5">
+    <aside class="px-md-5 text-lowercase">
       <h4>tags</h4>
       <div class="tags">
         <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tags) %>
       </div>
     </aside>
-    <aside class="px-md-5">
+    <aside class="px-md-5 text-lowercase">
       <h4>tech</h4>
       <div class="tags">
         <%= CenatusLtdWeb.ArticleView.render_tags_as_links_from(@conn, @tech_tags) %>
