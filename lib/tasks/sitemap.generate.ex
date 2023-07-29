@@ -7,7 +7,7 @@ defmodule Mix.Tasks.Sitemap.Generate do
   def run(_args) do
     Mix.shell.info "starting sitemap generation...."
 
-    bucket = "cenatus"
+    bucket = "mattspendlove"
     sitemap_dir = System.tmp_dir
 
     CenatusLtd.Sitemaps.generate

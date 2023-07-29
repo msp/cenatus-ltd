@@ -1,6 +1,6 @@
 <%= render_page_title(@conn) %>
 
-<%= for article_row <- Enum.chunk_every(@articles, 2) do %>
+<%= for article_row <- Enum.chunk_every(@articles, 3) do %>
   <div class="row articles">
     <%= for article <- article_row do %>
       <%= render "article_preview.html", article: article, conn: @conn %>

@@ -64,14 +64,10 @@ defmodule CenatusLtdWeb.LayoutView do
   end
 
   def default_description do
-    "Cenatus operates in the fields of creative production and software design for live events, sound art installations, online media projects and immersive experiences.
-
-    We promote new music and media, develop artists and enable wider public use of innovative digital technologies for creativity.
-
-    Cenatus produced Netaudio London, the UK’s foremost digital culture festival incorporating strands for Live Music, Sound Art, Conference and Broadcast that operated in 2006, 2008 and 2011."
+    "Matt Spendlove is an artist from London who creates immersive installations, audiovisual performances and sonic artefacts. Across these situations he explores spatial ambiguity, structural form, waveform materiality and the illusory contours of psychophysics."
   end
 
   def default_title do
-    "Cenatus: creative | technology | production"
+    "matt spendlove: art | music | sound design"
   end
 end

@@ -1,6 +1,6 @@
-$cenatus-blue: #6CA8DC;
-$cenatus-light-grey: #ccc;
-$cenatus-light-blue: #BAD5ED;
+$cenatus-blue: #373737;
+$cenatus-light-grey: #9a9a9a;
+$cenatus-light-blue: #ccc;
 $cenatus-font-color: #4A4A4A;
 
 // https://getbootstrap.com/docs/5.0/customize/css-variables/
@@ -35,7 +35,7 @@ $grid-breakpoints: (
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Victor Mono';
   color: $cenatus-font-color;
   font-weight: 100;
 }
@@ -62,7 +62,7 @@ body {
     text-decoration: none;
 
     &:hover {
-      color: #498CC8;
+      color: $cenatus-light-grey;
     }
   }
 }
@@ -196,6 +196,7 @@ main {
   h2,
   h3,
   h4,
+  h5,
   .tag_page_title {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -589,6 +590,7 @@ footer {
     h2,
     h3,
     h4,
+    h5,
     .tag_page_title {
       white-space: normal;
       overflow: auto;
