@@ -67,7 +67,12 @@ body {
     &:hover {
       color: $cenatus-light-grey;
       font-weight: 900;
+      text-decoration: none;
     }
+  }
+
+  article a {
+    text-decoration: underline $cenatus-light-grey dotted;
   }
 }
 
@@ -229,6 +234,14 @@ main {
   }
 }
 
+article.preview {
+  img {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
 article.show {
   img:not(.header) {
     @media (min-width: map-get($grid-breakpoints, md)) {
@@ -241,7 +254,7 @@ article.show {
       color: $cenatus-blue;
 
       &:hover {
-        color: $cenatus-blue;
+        color: $cenatus-light-grey
       }
     }
   }
