@@ -11,8 +11,8 @@
 # and so on) as they will fail if something goes wrong.
 
 alias CenatusLtd.Repo
-alias CenatusLtd.User
-alias CenatusLtd.Section
+alias CenatusLtdWeb.User
+alias CenatusLtdWeb.Section
 
 require Logger
 
