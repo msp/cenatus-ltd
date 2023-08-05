@@ -50,15 +50,15 @@ $(document).ready(function() {
   $('main').imagesLoaded()
     .always(function(instance) {
       console.log('all images loaded!');
-    })
-    .done(function(instance) {
-      console.log('all images successfully loaded!');
 
       $('#spinner').hide();
 
       if (runAnimation) {
         startAnimation(home, mobileView, articlesSelector);
       }
+    })
+    .done(function(instance) {
+      console.log('all images successfully loaded!');
     })
     .fail(function() {
       console.log('all images loaded, at least one is broken!');
