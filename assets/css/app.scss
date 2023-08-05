@@ -1,12 +1,15 @@
-$cenatus-blue: #373737;
-$cenatus-light-grey: #9a9a9a;
-$cenatus-light-blue: #ccc;
-$cenatus-font-color: #4A4A4A;
+// https://www.schemecolor.com/red-white-black.php
+$cenatus-blue: #010A10;
+// $cenatus-light-grey: #A50113;
+$cenatus-light-grey: #C10206;
+$cenatus-light-blue: #DFE2DB;
+// $cenatus-font-color: #211D21;
+$cenatus-font-color: #010A10;
 
 // https://getbootstrap.com/docs/5.0/customize/css-variables/
 //
 :root {
-  --bs-body-font-size: 1.0rem;
+  --bs-body-font-size: 1.1rem;
   --bs-body-line-height: 1.7;
   // e.g.
   // --font-size-base: #{$my-sass-var};
@@ -35,9 +38,8 @@ $grid-breakpoints: (
 }
 
 body {
-  font-family: 'Victor Mono';
+  font-family: 'Roboto', sans-serif;
   color: $cenatus-font-color;
-  font-weight: 100;
 }
 
 .container-fluid.cenatus {
@@ -55,6 +57,7 @@ body {
   h5 {
     font-weight: bold;
     color: $cenatus-blue;
+    font-family: 'Victor Mono', monospace;
   }
 
   a {
@@ -63,6 +66,7 @@ body {
 
     &:hover {
       color: $cenatus-light-grey;
+      font-weight: 900;
     }
   }
 }
@@ -165,7 +169,7 @@ header {
   }
 
   svg {
-    fill: $cenatus-blue;
+    fill: $cenatus-font-color;
     width: 100%;
     height: 15%;
   }
