@@ -42,7 +42,7 @@ defmodule CenatusLtdWeb.TagController do
 
     page_assigns = %{
       articles: tag.articles ++ tag.tech_articles,
-      page_title: "'#{tag.name}' articles"
+      page_title: "'#{tag.name}' works"
     }
 
     conn
