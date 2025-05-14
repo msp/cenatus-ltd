@@ -1,6 +1,5 @@
 defmodule CenatusLtdWeb.LoadAllSections do
   import Plug.Conn
-  import Ecto.Query
 
   alias CenatusLtdWeb.Section
   alias CenatusLtd.Repo

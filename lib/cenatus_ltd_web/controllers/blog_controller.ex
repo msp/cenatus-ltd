@@ -1,7 +1,7 @@
 defmodule CenatusLtdWeb.BlogController do
   use CenatusLtdWeb, :controller
 
-  alias CenatusLtdWeb.{Article, Section}
+  alias CenatusLtdWeb.{Article}
 
   plug(CenatusLtdWeb.LoadAllBlogTags)
   plug(CenatusLtdWeb.LoadAllSections)

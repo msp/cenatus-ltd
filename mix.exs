@@ -5,7 +5,7 @@ defmodule CenatusLtd.Mixfile do
     [
       app: :cenatus_ltd,
       version: "0.0.1",
-      elixir: "~> 1.2",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -20,23 +20,7 @@ defmodule CenatusLtd.Mixfile do
   def application do
     [
       mod: {CenatusLtd, []},
-      applications: [
-        :sitemap,
-        :phoenix,
-        :phoenix_pubsub,
-        :phoenix_html,
-        :cowboy,
-        :logger,
-        :gettext,
-        :phoenix_ecto,
-        :postgrex,
-        :comeonin,
-        :ex_aws,
-        :hackney,
-        :poison,
-        :extwitter,
-        :elixirfm
-      ]
+      extra_applications: [:logger, :runtime_tools, :sitemap, :elixirfm]
     ]
   end
 
@@ -52,23 +36,24 @@ defmodule CenatusLtd.Mixfile do
       {:comeonin, "~> 2.0"},
       {:dart_sass, "~> 0.6", runtime: Mix.env() == :dev},
       {:earmark, "~> 1.2.2"},
-      {:ecto_sql, "~> 3.0"},
+      {:ecto_sql, "~> 3.12"},
       {:elixirfm, "~> 1.0.0"},
-      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:ex_aws, "~> 1.0"},
       {:extwitter, "~> 0.12"},
-      {:floki, "~> 0.21.0"},
-      {:gettext, "~> 0.11"},
+      {:floki, ">= 0.30.0", only: :test},
+      {:gettext, "~> 0.26"},
       {:hackney, "~> 1.6", override: true},
-      {:html_sanitize_ex, "~> 1.2"},
-      {:jason, "~> 1.0"},
+      {:html_sanitize_ex, "~> 1.4"},
+      {:jason, "~> 1.2"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:phoenix, "~> 1.7.0"},
-      {:phoenix_ecto, "~> 4.0"},
-      {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:phoenix_live_view, "~> 0.18.18"},
-      {:phoenix_live_dashboard, "~> 0.7.2"},
+      {:phoenix, "~> 1.7.21"},
+      {:phoenix_ecto, "~> 4.5"},
+      {:phoenix_html, "~> 4.1"},
+      {:phoenix_html_helpers, "~> 1.0.1"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_live_dashboard, "~> 0.8.3"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_view, "~> 2.0"},
       {:plug, "~> 1.7"},
@@ -76,9 +61,12 @@ defmodule CenatusLtd.Mixfile do
       {:poison, "~> 2.0", override: true},
       {:postgrex, ">= 0.0.0"},
       {:sitemap, "~> 0.9"},
-      {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 0.5"},
-      {:timex, "~> 3.0"}
+      {:telemetry_metrics, "~> 1.0"},
+      {:telemetry_poller, "~> 1.0"},
+      {:timex,
+       git: "https://github.com/gilbertwong96/timex.git",
+       branch: "fix/compilation-warning",
+       override: true}
     ]
   end
 

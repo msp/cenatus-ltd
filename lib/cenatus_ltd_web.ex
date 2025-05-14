@@ -61,20 +61,27 @@ defmodule CenatusLtdWeb do
           controller_module: 1
         ]
 
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
-
       alias CenatusLtdWeb.Router.Helpers, as: Routes
 
       import CenatusLtdWeb.ErrorHelpers
       import CenatusLtdWeb.Gettext
       import CenatusLtdWeb.SharedFormatters
+
+      # ← inject all your HTML & form helpers here
+      unquote(view_helpers())
     end
   end
 
   defp view_helpers do
     quote do
       unquote(verified_routes())
+
+      # Use all HTML functionality (forms, tags, etc)
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
+
+      # Re-inject the old tag/link helpers
+      use PhoenixHTMLHelpers
     end
   end
 

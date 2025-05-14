@@ -12,7 +12,7 @@ defmodule CenatusLtdWeb.PageController do
     articles = get_articles_tagged_by("featured")
 
     if length(articles) == 0 do
-      articles =
+      _articles =
         Repo.all(
           from(article in Article,
             limit: 2,

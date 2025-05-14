@@ -1,6 +1,5 @@
 defmodule CenatusLtdWeb.LoadAllCategories do
   import Plug.Conn
-  import Ecto.Query
 
   alias CenatusLtdWeb.Category
   alias CenatusLtd.Repo
