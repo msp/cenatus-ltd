@@ -53,7 +53,7 @@ body {
   h3,
   h4,
   h5 {
-    font-weight: bold;
+    font-weight: 400;
     color: $cenatus-blue;
   }
 
@@ -145,7 +145,7 @@ header {
       color: $cenatus-blue;
       display: block;
       font-size: 22px;
-      font-weight: 500;
+      font-weight: 400;
 
       &:hover {
         text-decoration: none;
