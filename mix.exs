@@ -20,23 +20,7 @@ defmodule CenatusLtd.Mixfile do
   def application do
     [
       mod: {CenatusLtd, []},
-      applications: [
-        :sitemap,
-        :phoenix,
-        :phoenix_pubsub,
-        :phoenix_html,
-        :cowboy,
-        :logger,
-        :gettext,
-        :phoenix_ecto,
-        :postgrex,
-        :comeonin,
-        :ex_aws,
-        :hackney,
-        :poison,
-        :extwitter,
-        :elixirfm
-      ]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -52,15 +36,15 @@ defmodule CenatusLtd.Mixfile do
       {:comeonin, "~> 2.0"},
       {:dart_sass, "~> 0.6", runtime: Mix.env() == :dev},
       {:earmark, "~> 1.2.2"},
-      {:ecto_sql, "~> 3.0"},
+      {:ecto_sql, "~> 3.11"},
       {:elixirfm, "~> 1.0.0"},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:ex_aws, "~> 1.0"},
       {:extwitter, "~> 0.12"},
-      {:floki, "~> 0.21.0"},
+      {:floki, "~> 0.36"},
       {:gettext, "~> 0.11"},
       {:hackney, "~> 1.6", override: true},
-      {:html_sanitize_ex, "~> 1.2"},
+      {:html_sanitize_ex, "~> 1.4"},
       {:jason, "~> 1.0"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:phoenix, "~> 1.7.0"},
