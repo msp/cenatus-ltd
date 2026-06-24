@@ -48,7 +48,6 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :cenatus_ltd, CenatusLtd.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "cenatus",
   database: "cenatus_ltd_dev",
   hostname: "localhost",
