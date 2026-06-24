@@ -41,6 +41,7 @@ $(document).ready(function() {
     $('#spinner').hide();
 
     TweenLite.set("header", { visibility: "visible" });
+    TweenLite.set(".navbar-nav .nav-item", { visibility: "visible" });
     TweenLite.set("main", { visibility: "visible" });
     TweenLite.set("table.articles", { visibility: "visible" });
     TweenLite.set(`${articlesSelector} .preview`, { visibility: "visible" });
@@ -94,6 +95,7 @@ $(document).ready(function() {
 
 function mobileAnimation(tl, articlesSelector) {
   tl.to('header', 0.01, { visibility: "visible" })
+    .set(".navbar-nav .nav-item", { visibility: "visible" })
     .to('.home .cenatus', 0.01, { opacity: 1 })
     .to('main', 0.01, { visibility: "visible" })
     .to(articlesSelector, 0.1, { visibility: "visible" })
@@ -120,6 +122,7 @@ function startAnimation(home, mobileView, articlesSelector) {
         .to('header', 0.01, { visibility: "visible" })
         .staggerFrom(".logo-circle", 0.01, { autoAlpha: 0, scale: 1, ease: Back.easeOut }, 0.05)
         .staggerFrom(".logo-letter", 0.01, { autoAlpha: 0, scale: 1, ease: Back.easeOut }, 0.1)
+        .set(".navbar-nav .nav-item", { visibility: "visible" })
         .staggerFrom(".home .header .nav-item ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)
         .staggerFrom(".home .category ", 0.3, { scale: 0.8, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.1)
         .to('main', 0.01, { visibility: "visible" })
@@ -136,6 +139,7 @@ function startAnimation(home, mobileView, articlesSelector) {
     if (!mobileView) {
       tl.to('main', 0.01, { visibility: "visible" })
         .to('header', 0.01, { visibility: "visible" })
+        .set(".navbar-nav .nav-item", { visibility: "visible" })
         .to(articlesSelector, 0.01, { visibility: "visible" })
         .to(".blog-aside", 0.01, { visibility: "visible" })
         .staggerFrom(".blog-aside", 0.3, { scale: 0.1, opacity: 0, delay: 0.1, ease: Expo.easeOut, force3D: true }, 0.3)

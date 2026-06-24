@@ -171,6 +171,7 @@ header {
 
 #spinner {
   display: flex;
+  visibility: visible;
   height: 90vh;
   justify-content: center;
   align-items: center;
@@ -196,10 +197,16 @@ table.articles {
   }
 }
 
+header,
+main,
 .articles,
 .blog-articles,
 .blog-aside,
 footer {
+  visibility: hidden;
+}
+
+.navbar-nav .nav-item {
   visibility: hidden;
 }
 
