@@ -23,12 +23,6 @@ else
     pool: Ecto.Adapters.SQL.Sandbox
 end
 
-config :extwitter, :oauth,
-  consumer_key: "foo",
-  consumer_secret: "bar",
-  access_token: "baz",
-  access_token_secret: "qux"
-
 config :elixirfm,
   api_key: "foo",
   secret_key: "bar"

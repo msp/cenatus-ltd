@@ -6,7 +6,7 @@ defmodule CenatusLtdWeb.BlogController do
   plug(CenatusLtdWeb.LoadAllBlogTags)
   plug(CenatusLtdWeb.LoadAllSections)
   plug(CenatusLtdWeb.LoadAllCategories)
-  plug(:load_periodic)
+  plug(CenatusLtdWeb.LoadPeriodic when action == :index)
 
   def index(conn, _params) do
     articles =
@@ -47,10 +47,5 @@ defmodule CenatusLtdWeb.BlogController do
       end
 
     render(conn, "show.html", article: main_article, related: related_articles)
-  end
-
-  defp load_periodic(conn, _options) do
-    conn = assign(conn, :tweets, CenatusLtd.Periodically.tweets())
-    assign(conn, :tracks, CenatusLtd.Periodically.tracks())
   end
 end

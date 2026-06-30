@@ -4,7 +4,7 @@ defmodule CenatusLtdWeb.TagController do
   alias CenatusLtdWeb.Tag
 
   plug(CenatusLtdWeb.LoadAllTags)
-  plug(:load_periodic)
+  plug(CenatusLtdWeb.LoadPeriodic when action == :show)
 
   def index(conn, _params) do
     tags =
@@ -81,10 +81,5 @@ defmodule CenatusLtdWeb.TagController do
     conn
     |> put_flash(:info, "Tag deleted successfully.")
     |> redirect(to: Routes.tag_path(conn, :index))
-  end
-
-  defp load_periodic(conn, _options) do
-    conn = assign(conn, :tweets, CenatusLtd.Periodically.tweets())
-    assign(conn, :tracks, CenatusLtd.Periodically.tracks())
   end
 end

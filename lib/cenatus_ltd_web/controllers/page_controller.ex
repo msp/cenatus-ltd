@@ -6,7 +6,7 @@ defmodule CenatusLtdWeb.PageController do
   alias CenatusLtdWeb.Article
 
   plug(CenatusLtdWeb.LoadAllTags)
-  plug(:load_periodic)
+  plug(CenatusLtdWeb.LoadPeriodic when action not in [:admin, :contact])
 
   def home(conn, _params) do
     articles = get_articles_tagged_by("featured")
@@ -79,10 +79,5 @@ defmodule CenatusLtdWeb.PageController do
         order_by: [desc: a.published_at]
       )
     )
-  end
-
-  defp load_periodic(conn, _options) do
-    conn = assign(conn, :tweets, CenatusLtd.Periodically.tweets())
-    assign(conn, :tracks, CenatusLtd.Periodically.tracks())
   end
 end

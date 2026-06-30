@@ -4,7 +4,7 @@ defmodule CenatusLtdWeb.CategoryController do
   alias CenatusLtdWeb.Category
 
   plug(CenatusLtdWeb.LoadAllTags)
-  plug(:load_periodic)
+  plug(CenatusLtdWeb.LoadPeriodic when action == :show)
 
   def index(conn, _params) do
     categories = Repo.all(Category)
@@ -76,10 +76,5 @@ defmodule CenatusLtdWeb.CategoryController do
     conn
     |> put_flash(:info, "Category deleted successfully.")
     |> redirect(to: Routes.category_path(conn, :index))
-  end
-
-  defp load_periodic(conn, _options) do
-    conn = assign(conn, :tweets, CenatusLtd.Periodically.tweets())
-    assign(conn, :tracks, CenatusLtd.Periodically.tracks())
   end
 end
