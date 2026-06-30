@@ -40,7 +40,7 @@ defmodule CenatusLtd.Mixfile do
       {:elixirfm, "~> 1.0.0"},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:ex_aws, "~> 1.0"},
-      {:extwitter, "~> 0.12"},
+      {:sweet_xml, "~> 0.7"},
       {:floki, "~> 0.36"},
       {:gettext, "~> 0.11"},
       {:hackney, "~> 1.6", override: true},

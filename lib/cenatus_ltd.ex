@@ -4,19 +4,11 @@ defmodule CenatusLtd do
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    import Supervisor.Spec
-
-    # Define workers and child supervisors to be supervised
     children = [
-      # Start the PubSub system
       {Phoenix.PubSub, name: CenatusLtd.PubSub},
-      # Start the Ecto repository
-      supervisor(CenatusLtd.Repo, []),
-      # Start the endpoint when the application starts
-      supervisor(CenatusLtdWeb.Endpoint, []),
-      # Start your own worker by calling: CenatusLtd.Worker.start_link(arg1, arg2, arg3)
-      # worker(CenatusLtd.Worker, [arg1, arg2, arg3]),
-      worker(CenatusLtd.Periodically, [%{}])
+      CenatusLtd.Repo,
+      CenatusLtdWeb.Endpoint,
+      {CenatusLtd.Periodically, %{}}
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

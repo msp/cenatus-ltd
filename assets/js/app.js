@@ -6,9 +6,6 @@ import "phoenix_html"
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 
-// https://github.com/twitter/twitter-text/tree/master/js/pkg
-import twitter from "../vendor/twitter-text-3.1.0.min"
-
 // https://github.com/cloudinary/pkg-cloudinary-core
 import cloudinary from "../vendor/cloudinary-core-shrinkwrap.min"
 
@@ -35,8 +32,6 @@ $(document).ready(function() {
   const articlesSelector = blog ? ".blog-articles" : ".articles";
   const runAnimation = (mix_env != 'dev' && !admin);
   const mobileView = $('.navbar-toggler:visible').length > 0;
-  const tweets = $('.tweet .text');
-
   if (!runAnimation) {
     $('#spinner').hide();
 
@@ -80,14 +75,6 @@ $(document).ready(function() {
       (d.head || d.body).appendChild(s);
     })();
   }
-
-  $.each(tweets, function(index, tweet) {
-    $(tweet).html(
-      twitter.autoLink(
-        twitter.htmlEscape($(tweet).text())
-      )
-    );
-  });
 
   console.log("------------- DONE onload -------------");
 });
