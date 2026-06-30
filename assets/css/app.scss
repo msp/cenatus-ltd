@@ -669,6 +669,13 @@ footer {
   }
 
   .meta {
+    .substack {
+      .post svg {
+        width: calc(var(--bs-body-font-size) - 5px);
+        height: calc(var(--bs-body-font-size) - 5px);
+      }
+    }
+
     .last-fm {
       .track {
         svg {
