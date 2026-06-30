@@ -174,7 +174,7 @@ header {
 
 table.articles {
   tr.heading {
-    background-color: #ccc;
+    background-color: $cenatus-light-grey;
   }
 
   img {
@@ -290,23 +290,27 @@ article.show {
   @include divider-top;
   @include cenatus-smaller-font();
 
-  .twitter {
-    .tweet {
-      padding-top: 5px;
+  .substack {
+    .post {
+      list-style: none;
       padding-bottom: 5px;
 
-      .glyphicon {
+      .post-meta {
+        display: block;
+        color: #bbb;
         font-size: smaller;
-        color: #ccc;
       }
+    }
 
-      a {
-        max-width: 80%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: inline-block;
-        vertical-align: bottom;
+    .post .description {
+      display: block;
+    }
+
+    .post.note .text a {
+      color: $cenatus-font-color;
+
+      &:hover {
+        color: $cenatus-font-color;
       }
     }
   }
@@ -315,7 +319,7 @@ article.show {
     .track {
       .glyphicon {
         font-size: smaller;
-        color: #ccc;
+        color: $cenatus-light-grey;
       }
 
       list-style: none;
