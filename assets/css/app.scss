@@ -330,6 +330,16 @@ article.show {
       display: block;
     }
 
+    .post svg {
+      color: $cenatus-light-grey;
+    }
+
+    .post.article .text a {
+      text-decoration: underline $cenatus-light-grey dotted;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
     .post.note .text a {
       color: $cenatus-font-color;
 
@@ -343,6 +353,10 @@ article.show {
     .track {
       .glyphicon {
         font-size: smaller;
+        color: $cenatus-light-grey;
+      }
+
+      svg {
         color: $cenatus-light-grey;
       }
 
